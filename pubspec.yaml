@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_localizations:
     sdk: flutter
+  flutter_native_splash: ^2.4.6
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +59,20 @@ flutter_launcher_icons:
     image_path: "assets/icons/app_logo.png"
     # background_color: "#hexcode"
     # theme_color: "#hexcode"
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: "assets/icons/app_logo.png"
+  color_dark: "#042a49"
+  android: true
+  ios: true
+  web: true
+  fullscreen: true
+  android_12:
+    color: "#ffffff"
+    image: "assets/icons/app_logo.png"
+    color_dark: "#042a49"
+    fullscreen: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
