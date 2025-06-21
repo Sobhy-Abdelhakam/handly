@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:handly/generated/l10n.dart';
 
 class EmailField extends StatelessWidget {
-  const EmailField({super.key, required this.controller, this.focusNode, this.onChangeFocus});
-  final TextEditingController controller;
+  const EmailField({super.key, this.controller, this.focusNode, this.onChangeFocus});
+  final TextEditingController? controller;
   final FocusNode? focusNode;
   final void Function(String)? onChangeFocus;
 

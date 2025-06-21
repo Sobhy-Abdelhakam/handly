@@ -46,6 +46,13 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "login_success": MessageLookupByLibrary.simpleMessage("Login successful"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "name_min_length": MessageLookupByLibrary.simpleMessage(
+      "Name must be at least 3 characters",
+    ),
+    "name_only_letters": MessageLookupByLibrary.simpleMessage(
+      "Name must contain only letters and spaces",
+    ),
+    "name_required": MessageLookupByLibrary.simpleMessage("Name is required"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "password_min_length": MessageLookupByLibrary.simpleMessage(
       "Password must be at least 6 characters",

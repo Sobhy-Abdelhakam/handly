@@ -1,34 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:handly/features/auth/presentation/register/name_field.dart';
 import 'package:handly/features/auth/presentation/widget/confirm_button.dart';
 import 'package:handly/features/auth/presentation/widget/email_field.dart';
 import 'package:handly/features/auth/presentation/widget/password_field.dart';
 import 'package:handly/generated/l10n.dart';
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+class RegisterForm extends StatefulWidget {
+  const RegisterForm({super.key});
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<RegisterForm> createState() => _RegisterFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _RegisterFormState extends State<RegisterForm> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
+  final _nameFocus = FocusNode();
   final _emailFocus = FocusNode();
   final _passwordFocus = FocusNode();
+  final _confirmPassFocus = FocusNode();
 
   @override
   void dispose() {
+    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
+    confirmPasswordController.dispose();
+    _nameFocus.dispose();
     _emailFocus.dispose();
     _passwordFocus.dispose();
+    _confirmPassFocus.dispose();
     super.dispose();
   }
 
-  void _login() {
+  void _register() {
     if (_formKey.currentState?.validate() ?? false) {
       // TODO: Replace with actual login logic
       ScaffoldMessenger.of(
@@ -44,10 +54,17 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
       child: Column(
-        spacing: 8,
+        spacing: 32,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          NameField(
+            controller: nameController,
+            focusNode: _nameFocus,
+            onChangeFocus: (_) {
+              FocusScope.of(context).requestFocus(_emailFocus);
+            },
+          ),
           EmailField(
             controller: emailController,
             focusNode: _emailFocus,
@@ -58,20 +75,18 @@ class _LoginFormState extends State<LoginForm> {
           PasswordField(
             controller: passwordController,
             focusNode: _passwordFocus,
-            onSubmitted: (_) => _login(),
+            onSubmitted: (_) {
+              _register();
+            },
           ),
+          ConfirmButton(text: S.of(context).register, submit: _register),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Spacer(),
-              TextButton(
-                onPressed: () {
-                  // TODO: Navigate to forgot password screen
-                },
-                child: Text(S.of(context).forgot_password),
-              ),
+              Text(S.of(context).already_have_account),
+              TextButton(onPressed: () {}, child: Text(S.of(context).login)),
             ],
           ),
-          ConfirmButton(text: S.of(context).login, submit: _login),
         ],
       ),
     );

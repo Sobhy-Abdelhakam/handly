@@ -89,6 +89,36 @@ class S {
     return Intl.message('Register', name: 'register', desc: '', args: []);
   }
 
+  /// `Name is required`
+  String get name_required {
+    return Intl.message(
+      'Name is required',
+      name: 'name_required',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name must contain only letters and spaces`
+  String get name_only_letters {
+    return Intl.message(
+      'Name must contain only letters and spaces',
+      name: 'name_only_letters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name must be at least 3 characters`
+  String get name_min_length {
+    return Intl.message(
+      'Name must be at least 3 characters',
+      name: 'name_min_length',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Email is required`
   String get email_required {
     return Intl.message(

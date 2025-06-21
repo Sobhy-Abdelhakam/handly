@@ -50,6 +50,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "تم تسجيل الدخول بنجاح",
     ),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "name_min_length": MessageLookupByLibrary.simpleMessage(
+      "يجب أن يكون الاسم 3 أحرف على الأقل",
+    ),
+    "name_only_letters": MessageLookupByLibrary.simpleMessage(
+      "يجب أن يحتوي الاسم على أحرف ومسافات فقط",
+    ),
+    "name_required": MessageLookupByLibrary.simpleMessage("الاسم مطلوب"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "password_min_length": MessageLookupByLibrary.simpleMessage(
       "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",

@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Spacer(),
+            const Spacer(),
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -42,8 +42,8 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   Text(S.of(context).login),
-                  SizedBox(height: 16),
-                  LoginForm(),
+                  const SizedBox(height: 16),
+                  const LoginForm(),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
