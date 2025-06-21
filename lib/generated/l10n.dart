@@ -58,6 +58,151 @@ class S {
   String get title {
     return Intl.message('Handly', name: 'title', desc: '', args: []);
   }
+
+  /// `Celebrate the art of craftsmanship. Discover, shop, and support handmade creations made with passion — each piece tells a story.`
+  String get description {
+    return Intl.message(
+      'Celebrate the art of craftsmanship. Discover, shop, and support handmade creations made with passion — each piece tells a story.',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome Back`
+  String get welcome_back {
+    return Intl.message(
+      'Welcome Back',
+      name: 'welcome_back',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message('Login', name: 'login', desc: '', args: []);
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message('Register', name: 'register', desc: '', args: []);
+  }
+
+  /// `Email is required`
+  String get email_required {
+    return Intl.message(
+      'Email is required',
+      name: 'email_required',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is required`
+  String get password_required {
+    return Intl.message(
+      'Password is required',
+      name: 'password_required',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot Password?`
+  String get forgot_password {
+    return Intl.message(
+      'Forgot Password?',
+      name: 'forgot_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message('Email', name: 'email', desc: '', args: []);
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message('Password', name: 'password', desc: '', args: []);
+  }
+
+  /// `Confirm Password`
+  String get confirm_password {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid email format`
+  String get invalid_email {
+    return Intl.message(
+      'Invalid email format',
+      name: 'invalid_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 6 characters`
+  String get password_min_length {
+    return Intl.message(
+      'Password must be at least 6 characters',
+      name: 'password_min_length',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message('Name', name: 'name', desc: '', args: []);
+  }
+
+  /// `Already have an account?`
+  String get already_have_account {
+    return Intl.message(
+      'Already have an account?',
+      name: 'already_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account?`
+  String get dont_have_account {
+    return Intl.message(
+      'Don\'t have an account?',
+      name: 'dont_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login successful`
+  String get login_success {
+    return Intl.message(
+      'Login successful',
+      name: 'login_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login faild, please try again`
+  String get login_failed {
+    return Intl.message(
+      'Login faild, please try again',
+      name: 'login_failed',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

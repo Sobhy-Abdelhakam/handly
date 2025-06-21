@@ -22,6 +22,43 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "already_have_account": MessageLookupByLibrary.simpleMessage(
+      "هل لديك حساب؟",
+    ),
+    "confirm_password": MessageLookupByLibrary.simpleMessage(
+      "تأكيد كلمة المرور",
+    ),
+    "description": MessageLookupByLibrary.simpleMessage(
+      "احتفل بفنون الحرف اليدوية. اكتشف، تسوّق، وادعم إبداعاتنا المصنوعة يدويًا بشغف - كل قطعة تروي قصة.",
+    ),
+    "dont_have_account": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+    "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "email_required": MessageLookupByLibrary.simpleMessage(
+      "البريد الإلكتروني مطلوب",
+    ),
+    "forgot_password": MessageLookupByLibrary.simpleMessage(
+      "هل نسيت كلمة المرور؟",
+    ),
+    "invalid_email": MessageLookupByLibrary.simpleMessage(
+      "البريد الإلكتروني غير صالح",
+    ),
+    "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "login_failed": MessageLookupByLibrary.simpleMessage(
+      "فشل تسجيل الدخول، يرجي المحاولة مرة أخرى",
+    ),
+    "login_success": MessageLookupByLibrary.simpleMessage(
+      "تم تسجيل الدخول بنجاح",
+    ),
+    "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+    "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "password_min_length": MessageLookupByLibrary.simpleMessage(
+      "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+    ),
+    "password_required": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور مطلوبة",
+    ),
+    "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "title": MessageLookupByLibrary.simpleMessage("هاندلي"),
+    "welcome_back": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
   };
 }

@@ -22,6 +22,39 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "already_have_account": MessageLookupByLibrary.simpleMessage(
+      "Already have an account?",
+    ),
+    "confirm_password": MessageLookupByLibrary.simpleMessage(
+      "Confirm Password",
+    ),
+    "description": MessageLookupByLibrary.simpleMessage(
+      "Celebrate the art of craftsmanship. Discover, shop, and support handmade creations made with passion — each piece tells a story.",
+    ),
+    "dont_have_account": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account?",
+    ),
+    "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "email_required": MessageLookupByLibrary.simpleMessage("Email is required"),
+    "forgot_password": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+    "invalid_email": MessageLookupByLibrary.simpleMessage(
+      "Invalid email format",
+    ),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "login_failed": MessageLookupByLibrary.simpleMessage(
+      "Login faild, please try again",
+    ),
+    "login_success": MessageLookupByLibrary.simpleMessage("Login successful"),
+    "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "password_min_length": MessageLookupByLibrary.simpleMessage(
+      "Password must be at least 6 characters",
+    ),
+    "password_required": MessageLookupByLibrary.simpleMessage(
+      "Password is required",
+    ),
+    "register": MessageLookupByLibrary.simpleMessage("Register"),
     "title": MessageLookupByLibrary.simpleMessage("Handly"),
+    "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome Back"),
   };
 }
