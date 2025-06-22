@@ -11,7 +11,7 @@ class RegisterScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(S.of(context).register),
         centerTitle: true,
-        titleTextStyle: Theme.of(context).textTheme.displaySmall?.copyWith(
+        titleTextStyle: Theme.of(context).textTheme.headlineLarge?.copyWith(
           color: Theme.of(context).colorScheme.primary,
           fontWeight: FontWeight.bold,
         ),

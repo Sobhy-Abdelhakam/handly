@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:handly/core/router/routers.dart';
 import 'package:handly/generated/l10n.dart';
 
 class InitScreen extends StatelessWidget {
@@ -40,7 +41,7 @@ class InitScreen extends StatelessWidget {
                 padding: EdgeInsets.all(8),
               ),
               onPressed: () {
-                // TODO: Navigate to login screen
+                Navigator.pushNamed(context, Routers.login);
               },
               child: Text(
                 S.of(context).login,
@@ -60,7 +61,7 @@ class InitScreen extends StatelessWidget {
                 padding: EdgeInsets.all(8),
               ),
               onPressed: () {
-                // TODO: Navigate to register screen
+                Navigator.pushNamed(context, Routers.register);
               },
               child: Text(
                 S.of(context).register,

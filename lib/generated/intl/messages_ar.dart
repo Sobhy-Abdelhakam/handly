@@ -28,13 +28,26 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
+    "confirm_screen_sub_title": MessageLookupByLibrary.simpleMessage(
+      "أمان حسابك هو أولويتنا! أرسلنا لك رابطًا آمنًا لتغيير كلمة مرورك بأمان والحفاظ على حسابك محميًا.",
+    ),
+    "confirm_screen_title": MessageLookupByLibrary.simpleMessage(
+      "تم إرسال بريد إلكتروني لإعادة تعيين كلمة المرور",
+    ),
     "description": MessageLookupByLibrary.simpleMessage(
       "احتفل بفنون الحرف اليدوية. اكتشف، تسوّق، وادعم إبداعاتنا المصنوعة يدويًا بشغف - كل قطعة تروي قصة.",
     ),
+    "done": MessageLookupByLibrary.simpleMessage("تم"),
     "dont_have_account": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "email_required": MessageLookupByLibrary.simpleMessage(
       "البريد الإلكتروني مطلوب",
+    ),
+    "forget_pass_sup_title": MessageLookupByLibrary.simpleMessage(
+      "لا تقلق، ففي بعض الأحيان قد ينسى بعض الأشخاص ذلك، أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة تعيين كلمة المرور.",
+    ),
+    "forget_pass_title": MessageLookupByLibrary.simpleMessage(
+      "نسيت كلمة المرور",
     ),
     "forgot_password": MessageLookupByLibrary.simpleMessage(
       "هل نسيت كلمة المرور؟",
@@ -65,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "كلمة المرور مطلوبة",
     ),
     "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "send": MessageLookupByLibrary.simpleMessage("إرسال"),
     "title": MessageLookupByLibrary.simpleMessage("هاندلي"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
   };

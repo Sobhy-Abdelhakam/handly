@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:handly/core/router/routers.dart';
 import 'package:handly/features/auth/presentation/register/name_field.dart';
 import 'package:handly/features/auth/presentation/widget/confirm_button.dart';
 import 'package:handly/features/auth/presentation/widget/email_field.dart';
@@ -54,6 +55,7 @@ class _RegisterFormState extends State<RegisterForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
         spacing: 32,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -84,7 +86,12 @@ class _RegisterFormState extends State<RegisterForm> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(S.of(context).already_have_account),
-              TextButton(onPressed: () {}, child: Text(S.of(context).login)),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, Routers.login);
+                },
+                child: Text(S.of(context).login),
+              ),
             ],
           ),
         ],

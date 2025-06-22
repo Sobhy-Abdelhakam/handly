@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:handly/core/router/routers.dart';
 import 'package:handly/features/auth/presentation/login/login_form.dart';
 import 'package:handly/generated/l10n.dart';
 
@@ -31,7 +32,7 @@ class LoginScreen extends StatelessWidget {
                 color: Theme.of(context).colorScheme.surface,
               ),
               width: double.infinity,
-              padding: EdgeInsets.all(32),
+              padding: EdgeInsets.all(16),
               child: Column(
                 spacing: 8,
                 children: [
@@ -51,7 +52,10 @@ class LoginScreen extends StatelessWidget {
                       Text(S.of(context).dont_have_account),
                       TextButton(
                         onPressed: () {
-                          // TODO: Navigate to register screen
+                          Navigator.pushReplacementNamed(
+                            context,
+                            Routers.register,
+                          );
                         },
                         child: Text(S.of(context).register),
                       ),

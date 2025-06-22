@@ -149,6 +149,51 @@ class S {
     );
   }
 
+  /// `Forget password`
+  String get forget_pass_title {
+    return Intl.message(
+      'Forget password',
+      name: 'forget_pass_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don’t worry sometimes people can forget too, enter your email and we will send you a password reset link.`
+  String get forget_pass_sup_title {
+    return Intl.message(
+      'Don’t worry sometimes people can forget too, enter your email and we will send you a password reset link.',
+      name: 'forget_pass_sup_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send`
+  String get send {
+    return Intl.message('Send', name: 'send', desc: '', args: []);
+  }
+
+  /// `Password Reset Email Sent`
+  String get confirm_screen_title {
+    return Intl.message(
+      'Password Reset Email Sent',
+      name: 'confirm_screen_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Account Security is Our Priority! We've Sent You a Secure Link to Safely Change Your Password and Keep Your Account Protected.`
+  String get confirm_screen_sub_title {
+    return Intl.message(
+      'Your Account Security is Our Priority! We\'ve Sent You a Secure Link to Safely Change Your Password and Keep Your Account Protected.',
+      name: 'confirm_screen_sub_title',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Email`
   String get email {
     return Intl.message('Email', name: 'email', desc: '', args: []);
@@ -232,6 +277,11 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `Done`
+  String get done {
+    return Intl.message('Done', name: 'done', desc: '', args: []);
   }
 }
 

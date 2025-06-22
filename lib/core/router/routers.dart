@@ -3,6 +3,7 @@ class Routers {
   static const String login = '/login';
   static const String register = '/register';
   static const String forgetPassword = '/forget-password';
+  static const String confrimSendEmail = '/confrim-send-email';
   // bottom navigation
   static const String main = '/main';
   static const String home = '/home';

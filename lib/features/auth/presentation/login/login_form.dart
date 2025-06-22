@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:handly/core/router/routers.dart';
 import 'package:handly/features/auth/presentation/widget/confirm_button.dart';
 import 'package:handly/features/auth/presentation/widget/email_field.dart';
 import 'package:handly/features/auth/presentation/widget/password_field.dart';
@@ -65,7 +66,7 @@ class _LoginFormState extends State<LoginForm> {
               const Spacer(),
               TextButton(
                 onPressed: () {
-                  // TODO: Navigate to forgot password screen
+                  Navigator.pushNamed(context, Routers.forgetPassword);
                 },
                 child: Text(S.of(context).forgot_password),
               ),

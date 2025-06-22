@@ -28,14 +28,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
+    "confirm_screen_sub_title": MessageLookupByLibrary.simpleMessage(
+      "Your Account Security is Our Priority! We\'ve Sent You a Secure Link to Safely Change Your Password and Keep Your Account Protected.",
+    ),
+    "confirm_screen_title": MessageLookupByLibrary.simpleMessage(
+      "Password Reset Email Sent",
+    ),
     "description": MessageLookupByLibrary.simpleMessage(
       "Celebrate the art of craftsmanship. Discover, shop, and support handmade creations made with passion — each piece tells a story.",
     ),
+    "done": MessageLookupByLibrary.simpleMessage("Done"),
     "dont_have_account": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "email_required": MessageLookupByLibrary.simpleMessage("Email is required"),
+    "forget_pass_sup_title": MessageLookupByLibrary.simpleMessage(
+      "Don’t worry sometimes people can forget too, enter your email and we will send you a password reset link.",
+    ),
+    "forget_pass_title": MessageLookupByLibrary.simpleMessage(
+      "Forget password",
+    ),
     "forgot_password": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
     "invalid_email": MessageLookupByLibrary.simpleMessage(
       "Invalid email format",
@@ -61,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Password is required",
     ),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
+    "send": MessageLookupByLibrary.simpleMessage("Send"),
     "title": MessageLookupByLibrary.simpleMessage("Handly"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome Back"),
   };

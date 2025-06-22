@@ -11,6 +11,11 @@
     "email_required": "Email is required",
     "password_required": "Password is required",
     "forgot_password": "Forgot Password?",
+    "forget_pass_title": "Forget password",
+    "forget_pass_sup_title": "Don’t worry sometimes people can forget too, enter your email and we will send you a password reset link.",
+    "send": "Send",
+    "confirm_screen_title": "Password Reset Email Sent",
+    "confirm_screen_sub_title": "Your Account Security is Our Priority! We've Sent You a Secure Link to Safely Change Your Password and Keep Your Account Protected.",
     "email": "Email",
     "password": "Password",
     "confirm_password": "Confirm Password",
@@ -20,5 +25,6 @@
     "already_have_account": "Already have an account?",
     "dont_have_account": "Don't have an account?",
     "login_success": "Login successful",
-    "login_failed": "Login faild, please try again"
+    "login_failed": "Login faild, please try again",
+    "done": "Done"
 }
