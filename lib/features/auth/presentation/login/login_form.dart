@@ -35,10 +35,6 @@ class _LoginFormState extends State<LoginForm> {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text(S.of(context).login_success)));
-    } else {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(S.of(context).login_failed)));
     }
   }
 
@@ -47,7 +43,7 @@ class _LoginFormState extends State<LoginForm> {
     return Form(
       key: _formKey,
       child: Column(
-        spacing: 8,
+        spacing: 12,
         children: [
           EmailField(
             controller: emailController,
@@ -72,6 +68,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ],
           ),
+          const SizedBox(height: 8),
           ConfirmButton(text: S.of(context).login, submit: _login),
         ],
       ),
