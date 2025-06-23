@@ -8,15 +8,7 @@ class InitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isTablet = ResponsiveHelper.isTablet(context);
-    final isDesktop = ResponsiveHelper.isDesktop(context);
-
-    final maxWidth =
-        isDesktop
-            ? 600.0
-            : isTablet
-            ? 500.0
-            : double.infinity;
+    final maxWidth = ResponsiveHelper.getMaxWidth(context);
 
     return Scaffold(
       body: Container(
@@ -27,9 +19,9 @@ class InitScreen extends StatelessWidget {
             colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
           ),
         ),
-        child: Center(
-          child: SingleChildScrollView(
-            padding: ResponsiveHelper.getPadding(context),
+        child: SingleChildScrollView(
+          padding: ResponsiveHelper.getPadding(context),
+          child: Center(
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: maxWidth),
               child: Column(

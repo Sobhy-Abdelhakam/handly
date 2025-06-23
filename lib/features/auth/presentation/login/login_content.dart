@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:handly/core/router/routers.dart';
 import 'package:handly/features/auth/presentation/login/login_form.dart';
 import 'package:handly/generated/l10n.dart';
+import 'package:handly/utils/responsive/responsive_helper.dart';
 
 class LoginContent extends StatelessWidget {
   const LoginContent({super.key});
@@ -9,6 +10,7 @@ class LoginContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      padding: ResponsiveHelper.getPadding(context),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         spacing: 8,

@@ -42,19 +42,21 @@ class ResponsiveHelper {
     T? tablet,
     T? desktop,
   }) {
-    if (isDesktop(context) && desktop != null) {
-      return desktop;
-    } else if (isTablet(context) && tablet != null) {
-      return tablet;
-    } else {
-      return mobile;
-    }
+    if (isDesktop(context) && desktop != null) return desktop;
+    if (isTablet(context) && tablet != null) return tablet;
+    return mobile;
   }
 
   static EdgeInsets getPadding(BuildContext context) {
     return EdgeInsets.all(
       getValue(context, mobile: 16.0, tablet: 24.0, desktop: 32.0),
     );
+  }
+
+  static double getMaxWidth(BuildContext context) {
+    if (isDesktop(context)) return 500;
+    if (isTablet(context)) return 450;
+    return double.infinity;
   }
 
   static double getFontSize(

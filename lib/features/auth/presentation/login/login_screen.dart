@@ -8,21 +8,22 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = ResponsiveHelper.isDesktop(context);
-    final isTablet = ResponsiveHelper.isTablet(context);
+    final isMobile = ResponsiveHelper.isMobile(context);
 
     return Scaffold(
-      body: Container(
-        width: ResponsiveHelper.screenWidth(context),
-        height: ResponsiveHelper.screenHeight(context),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/auth_bg.jpg'),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
+      body: SafeArea(
+        child: Container(
+          width: ResponsiveHelper.screenWidth(context),
+          height: ResponsiveHelper.screenHeight(context),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/auth_bg.jpg'),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
+            ),
           ),
+          child: isMobile ? LoginButtomSheet() : LoginCard(),
         ),
-        child: isTablet || isDesktop ? LoginCard() : LoginButtomSheet(),
       ),
     );
   }

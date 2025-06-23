@@ -20,10 +20,7 @@ class LoginCard extends StatelessWidget {
               color: Colors.grey.withValues(alpha: 0.1),
               borderRadius: BorderRadius.all(Radius.circular(25)),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: LoginContent(),
-            ),
+            child: LoginContent(),
           ),
         ),
       ),

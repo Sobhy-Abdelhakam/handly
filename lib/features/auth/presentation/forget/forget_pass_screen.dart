@@ -7,21 +7,17 @@ class ForgetPassScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDesktop = ResponsiveHelper.isDesktop(context);
-    final isTablet = ResponsiveHelper.isTablet(context);
-    final maxFormWidth =
-        isDesktop
-            ? 500.0
-            : isTablet
-            ? 450.0
-            : double.infinity;
+    final maxFormWidth = ResponsiveHelper.getMaxWidth(context);
 
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: maxFormWidth),
-            child: ForgetPassContent(),
+        child: SingleChildScrollView(
+          padding: ResponsiveHelper.getPadding(context),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: maxFormWidth),
+              child: ForgetPassContent(),
+            ),
           ),
         ),
       ),

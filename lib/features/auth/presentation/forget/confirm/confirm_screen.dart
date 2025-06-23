@@ -12,14 +12,7 @@ class ConfirmScreen extends StatelessWidget {
     final isMobile = ResponsiveHelper.isMobile(context);
     final screenWidth = ResponsiveHelper.screenWidth(context);
 
-    final isDesktop = ResponsiveHelper.isDesktop(context);
-    final isTablet = ResponsiveHelper.isTablet(context);
-    final maxWidth =
-        isDesktop
-            ? 500.0
-            : isTablet
-            ? 450.0
-            : double.infinity;
+    final maxWidth = ResponsiveHelper.getMaxWidth(context);
 
     return Scaffold(
       body: SafeArea(

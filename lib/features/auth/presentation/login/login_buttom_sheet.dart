@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:handly/features/auth/presentation/login/login_content.dart';
-import 'package:handly/utils/responsive/responsive_helper.dart';
 
 class LoginButtomSheet extends StatelessWidget {
   const LoginButtomSheet({super.key});
@@ -17,7 +16,6 @@ class LoginButtomSheet extends StatelessWidget {
           ),
           color: Theme.of(context).colorScheme.surface,
         ),
-        padding: ResponsiveHelper.getPadding(context),
         child: LoginContent(),
       ),
     );
