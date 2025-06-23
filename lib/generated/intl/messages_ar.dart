@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "email_required": MessageLookupByLibrary.simpleMessage(
       "البريد الإلكتروني مطلوب",
     ),
+    "error": MessageLookupByLibrary.simpleMessage("خطأ"),
     "forget_pass_sup_title": MessageLookupByLibrary.simpleMessage(
       "لا تقلق، ففي بعض الأحيان قد ينسى بعض الأشخاص ذلك، أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة تعيين كلمة المرور.",
     ),
@@ -70,6 +71,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "يجب أن يحتوي الاسم على أحرف ومسافات فقط",
     ),
     "name_required": MessageLookupByLibrary.simpleMessage("الاسم مطلوب"),
+    "page_not_found": MessageLookupByLibrary.simpleMessage(
+      "الصفحة غير موجودة!",
+    ),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "password_min_length": MessageLookupByLibrary.simpleMessage(
       "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",

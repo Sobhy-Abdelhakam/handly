@@ -59,6 +59,21 @@ class S {
     return Intl.message('Handly', name: 'title', desc: '', args: []);
   }
 
+  /// `Error`
+  String get error {
+    return Intl.message('Error', name: 'error', desc: '', args: []);
+  }
+
+  /// `Page Not Found!`
+  String get page_not_found {
+    return Intl.message(
+      'Page Not Found!',
+      name: 'page_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Celebrate the art of craftsmanship. Discover, shop, and support handmade creations made with passion — each piece tells a story.`
   String get description {
     return Intl.message(

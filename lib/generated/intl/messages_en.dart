@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "email_required": MessageLookupByLibrary.simpleMessage("Email is required"),
+    "error": MessageLookupByLibrary.simpleMessage("Error"),
     "forget_pass_sup_title": MessageLookupByLibrary.simpleMessage(
       "Don’t worry sometimes people can forget too, enter your email and we will send you a password reset link.",
     ),
@@ -66,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Name must contain only letters and spaces",
     ),
     "name_required": MessageLookupByLibrary.simpleMessage("Name is required"),
+    "page_not_found": MessageLookupByLibrary.simpleMessage("Page Not Found!"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "password_min_length": MessageLookupByLibrary.simpleMessage(
       "Password must be at least 6 characters",

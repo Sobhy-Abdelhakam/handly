@@ -1,5 +1,7 @@
 {
     "title": "Handly",
+    "error": "Error",
+    "page_not_found": "Page Not Found!",
 
     "description": "Celebrate the art of craftsmanship. Discover, shop, and support handmade creations made with passion — each piece tells a story.",
     "welcome_back": "Welcome Back",
