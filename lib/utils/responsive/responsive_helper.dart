@@ -17,11 +17,11 @@ class ResponsiveHelper {
 
   static bool isTablet(BuildContext context) {
     final width = screenWidth(context);
-    return width >= mobileBreakpoint && width < tabletBreakpoint;
+    return width >= mobileBreakpoint && width < desktopBreakpoint;
   }
 
   static bool isDesktop(BuildContext context) {
-    return MediaQuery.of(context).size.width >= tabletBreakpoint;
+    return screenWidth(context) >= desktopBreakpoint;
   }
 
   static bool isPortrait(BuildContext context) =>
