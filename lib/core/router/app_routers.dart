@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:handly/core/router/not_found_page.dart';
 import 'package:handly/core/router/routers.dart';
+import 'package:handly/features/auth/cubit/auth_cubit.dart';
+import 'package:handly/features/auth/domain/repository/auth_repository.dart';
 import 'package:handly/features/auth/presentation/forget/confirm/confirm_screen.dart';
 import 'package:handly/features/auth/presentation/forget/forget_pass_screen.dart';
 import 'package:handly/features/auth/presentation/init_screen.dart';
@@ -10,17 +14,35 @@ class AppRouters {
   Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routers.initial:
-        return _buildRoute(settings, InitScreen());
+        return _buildRoute(settings, const InitScreen());
       case Routers.login:
-        return _buildRoute(settings, LoginScreen());
+        return _buildRoute(
+          settings,
+          BlocProvider(
+            create: (_) => AuthCubit(RepoImpl()),
+            child: const LoginScreen(),
+          ),
+        );
       case Routers.register:
-        return _buildRoute(settings, RegisterScreen());
+        return _buildRoute(
+          settings,
+          BlocProvider(
+            create: (_) => AuthCubit(RepoImpl()),
+            child: const RegisterScreen(),
+          ),
+        );
       case Routers.forgetPassword:
-        return _buildRoute(settings, ForgetPassScreen());
+        return _buildRoute(
+          settings,
+          BlocProvider(
+            create: (_) => AuthCubit(RepoImpl()),
+            child: const ForgetPassScreen(),
+          ),
+        );
       case Routers.confrimSendEmail:
-        return _buildRoute(settings, ConfirmScreen());
+        return _buildRoute(settings, const ConfirmScreen());
       default:
-        return _buildRoute(settings, Placeholder());
+        return _buildRoute(settings, NotFoundPage());
     }
   }
 
