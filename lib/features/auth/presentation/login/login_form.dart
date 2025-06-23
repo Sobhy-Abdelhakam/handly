@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/core/router/routers.dart';
+import 'package:handly/features/auth/cubit/auth_cubit.dart';
+import 'package:handly/features/auth/cubit/auth_state.dart';
 import 'package:handly/features/auth/presentation/widget/confirm_button.dart';
 import 'package:handly/features/auth/presentation/widget/email_field.dart';
 import 'package:handly/features/auth/presentation/widget/password_field.dart';
@@ -31,10 +34,10 @@ class _LoginFormState extends State<LoginForm> {
 
   void _login() {
     if (_formKey.currentState?.validate() ?? false) {
-      // TODO: Replace with actual login logic
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(S.of(context).login_success)));
+      context.read<AuthCubit>().login(
+        emailController.text,
+        passwordController.text,
+      );
     }
   }
 
@@ -69,7 +72,26 @@ class _LoginFormState extends State<LoginForm> {
             ],
           ),
           const SizedBox(height: 8),
-          ConfirmButton(text: S.of(context).login, submit: _login),
+          BlocConsumer<AuthCubit, AuthState>(
+            builder: (_, state) {
+              return state is AuthLoading
+                  ? const CircularProgressIndicator()
+                  : ConfirmButton(text: S.of(context).login, submit: _login);
+            },
+            listener: (_, state) {
+              if (state is AuthSuccess) {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  Routers.home,
+                  (route) => false,
+                );
+              } else if (state is AuthFailure) {
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text(state.message)));
+              }
+            },
+          ),
         ],
       ),
     );

@@ -6,6 +6,7 @@ import 'package:handly/features/auth/cubit/auth_cubit.dart';
 import 'package:handly/features/auth/domain/repository/auth_repository.dart';
 import 'package:handly/features/auth/presentation/forget/confirm/confirm_screen.dart';
 import 'package:handly/features/auth/presentation/forget/forget_pass_screen.dart';
+import 'package:handly/features/auth/presentation/home_screen.dart';
 import 'package:handly/features/auth/presentation/init_screen.dart';
 import 'package:handly/features/auth/presentation/login/login_screen.dart';
 import 'package:handly/features/auth/presentation/register/register_screen.dart';
@@ -41,6 +42,8 @@ class AppRouters {
         );
       case Routers.confrimSendEmail:
         return _buildRoute(settings, const ConfirmScreen());
+      case Routers.home:
+        return _buildRoute(settings, const HomeScreen());
       default:
         return _buildRoute(settings, NotFoundPage());
     }

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:handly/core/router/routers.dart';
+import 'package:handly/features/auth/cubit/auth_cubit.dart';
+import 'package:handly/features/auth/cubit/auth_state.dart';
 import 'package:handly/features/auth/presentation/register/name_field.dart';
 import 'package:handly/features/auth/presentation/widget/confirm_button.dart';
 import 'package:handly/features/auth/presentation/widget/email_field.dart';
@@ -40,10 +44,11 @@ class _RegisterFormState extends State<RegisterForm> {
 
   void _register() {
     if (_formKey.currentState?.validate() ?? false) {
-      // TODO: Replace with actual login logic
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(S.of(context).login_success)));
+      context.read<AuthCubit>().register(
+        nameController.text,
+        emailController.text,
+        passwordController.text,
+      );
     }
   }
 
@@ -77,7 +82,29 @@ class _RegisterFormState extends State<RegisterForm> {
             },
           ),
           const SizedBox(height: 8),
-          ConfirmButton(text: S.of(context).register, submit: _register),
+          BlocConsumer(
+            builder: (_, state) {
+              return state is AuthLoading
+                  ? const CircularProgressIndicator()
+                  : ConfirmButton(
+                    text: S.of(context).register,
+                    submit: _register,
+                  );
+            },
+            listener: (_, state) {
+              if (state is AuthSuccess) {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  Routers.home,
+                  (route) => false,
+                );
+              } else if (state is AuthFailure) {
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text(state.message)));
+              }
+            },
+          ),
         ],
       ),
     );

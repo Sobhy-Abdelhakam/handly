@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/core/router/routers.dart';
+import 'package:handly/features/auth/cubit/auth_cubit.dart';
+import 'package:handly/features/auth/cubit/auth_state.dart';
 import 'package:handly/features/auth/presentation/widget/confirm_button.dart';
 import 'package:handly/features/auth/presentation/widget/email_field.dart';
 import 'package:handly/generated/l10n.dart';
@@ -22,17 +25,9 @@ class _ForgetPassFormState extends State<ForgetPassForm> {
   }
 
   void _send() {
-    // if (_formKey.currentState?.validate() ?? false) {
-    //   // TODO: Replace with actual login logic
-    //   ScaffoldMessenger.of(
-    //     context,
-    //   ).showSnackBar(SnackBar(content: Text(S.of(context).login_success)));
-    // } else {
-    //   ScaffoldMessenger.of(
-    //     context,
-    //   ).showSnackBar(SnackBar(content: Text(S.of(context).login_failed)));
-    // }
-    Navigator.pushNamed(context, Routers.confrimSendEmail);
+    if (_formKey.currentState?.validate() ?? false) {
+      context.read<AuthCubit>().sendReset(emailController.text);
+    }
   }
 
   @override
@@ -48,7 +43,22 @@ class _ForgetPassFormState extends State<ForgetPassForm> {
             },
           ),
           const SizedBox(height: 32),
-          ConfirmButton(text: S.of(context).send, submit: _send),
+          BlocConsumer<AuthCubit, AuthState>(
+            builder: (_, state) {
+              return state is AuthLoading
+                  ? const CircularProgressIndicator()
+                  : ConfirmButton(text: S.of(context).login, submit: _send);
+            },
+            listener: (_, state) {
+              if (state is AuthResetEmailSent) {
+                Navigator.pushNamed(context, Routers.confrimSendEmail);
+              } else if (state is AuthFailure) {
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text(state.message)));
+              }
+            },
+          ),
         ],
       ),
     );
