@@ -11,19 +11,17 @@ class LoginScreen extends StatelessWidget {
     final isMobile = ResponsiveHelper.isMobile(context);
 
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          width: ResponsiveHelper.screenWidth(context),
-          height: ResponsiveHelper.screenHeight(context),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/auth_bg.jpg'),
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
-            ),
+      body: Container(
+        width: ResponsiveHelper.screenWidth(context),
+        height: ResponsiveHelper.screenHeight(context),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/auth_bg.jpg'),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken),
           ),
-          child: isMobile ? LoginButtomSheet() : LoginCard(),
         ),
+        child: isMobile ? LoginButtomSheet() : LoginCard(),
       ),
     );
   }
