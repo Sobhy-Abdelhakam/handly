@@ -21,24 +21,19 @@ class _RegisterFormState extends State<RegisterForm> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
 
   final _nameFocus = FocusNode();
   final _emailFocus = FocusNode();
   final _passwordFocus = FocusNode();
-  final _confirmPassFocus = FocusNode();
 
   @override
   void dispose() {
     nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
-    confirmPasswordController.dispose();
     _nameFocus.dispose();
     _emailFocus.dispose();
     _passwordFocus.dispose();
-    _confirmPassFocus.dispose();
     super.dispose();
   }
 
@@ -82,7 +77,7 @@ class _RegisterFormState extends State<RegisterForm> {
             },
           ),
           const SizedBox(height: 8),
-          BlocConsumer(
+          BlocConsumer<AuthCubit, AuthState>(
             builder: (_, state) {
               return state is AuthLoading
                   ? const CircularProgressIndicator()
