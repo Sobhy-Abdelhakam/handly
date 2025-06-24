@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/core/router/not_found_page.dart';
 import 'package:handly/core/router/routers.dart';
 import 'package:handly/features/auth/cubit/auth_cubit.dart';
-import 'package:handly/features/auth/domain/repository/auth_repository.dart';
+import 'package:handly/features/auth/data/repositoryimpl/auth_repo_impl.dart';
 import 'package:handly/features/auth/presentation/forget/confirm/confirm_screen.dart';
 import 'package:handly/features/auth/presentation/forget/forget_pass_screen.dart';
 import 'package:handly/features/auth/presentation/home_screen.dart';
@@ -20,7 +20,7 @@ class AppRouters {
         return _buildRoute(
           settings,
           BlocProvider(
-            create: (_) => AuthCubit(RepoImpl()),
+            create: (_) => AuthCubit(AuthRepoImpl()),
             child: const LoginScreen(),
           ),
         );
@@ -28,7 +28,7 @@ class AppRouters {
         return _buildRoute(
           settings,
           BlocProvider(
-            create: (_) => AuthCubit(RepoImpl()),
+            create: (_) => AuthCubit(AuthRepoImpl()),
             child: const RegisterScreen(),
           ),
         );
@@ -36,7 +36,7 @@ class AppRouters {
         return _buildRoute(
           settings,
           BlocProvider(
-            create: (_) => AuthCubit(RepoImpl()),
+            create: (_) => AuthCubit(AuthRepoImpl()),
             child: const ForgetPassScreen(),
           ),
         );
