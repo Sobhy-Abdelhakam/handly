@@ -1,4 +1,4 @@
-import 'package:handly/features/auth/domain/models/user_model.dart';
+import 'package:handly/features/auth/domain/models/user.dart';
 
 abstract class AuthState {}
 
@@ -7,7 +7,7 @@ class AuthInitial extends AuthState {}
 class AuthLoading extends AuthState {}
 
 class AuthSuccess extends AuthState {
-  final UserModel user;
+  final User user;
   AuthSuccess(this.user);
 }
 
