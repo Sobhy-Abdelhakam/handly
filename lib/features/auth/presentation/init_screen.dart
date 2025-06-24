@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:handly/core/router/routers.dart';
+import 'package:handly/features/auth/presentation/widget/confirm_button.dart';
 import 'package:handly/generated/l10n.dart';
 import 'package:handly/utils/responsive/responsive_helper.dart';
 
@@ -40,29 +41,9 @@ class InitScreen extends StatelessWidget {
                       ).textTheme.headlineLarge?.copyWith(color: Colors.white),
                     ),
                     const SizedBox(height: 32),
-                    SizedBox(
-                      width: double.infinity,
-                      child: FilledButton(
-                        style: FilledButton.styleFrom(
-                          backgroundColor:
-                              Theme.of(context).colorScheme.primary,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          padding: const EdgeInsets.symmetric(vertical: 14),
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, Routers.login);
-                        },
-                        child: Text(
-                          S.of(context).login,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.titleLarge?.copyWith(
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                        ),
-                      ),
+                    ConfirmButton(
+                      text: S.of(context).login,
+                      submit: () => Navigator.pushNamed(context, Routers.login),
                     ),
                     const SizedBox(height: 12),
                     SizedBox(
