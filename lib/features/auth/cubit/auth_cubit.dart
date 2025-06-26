@@ -13,16 +13,18 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthLoading());
     try {
       final response = await _authRepository.login(email, password);
-      
-      if(response.success && response.user != null){
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setBool('isLoggedIn', true);
-        await prefs.setString('user', jsonEncode(response.user!.toJson()));
-        await prefs.setString('token', response.token ?? "");
-        emit(AuthSuccess(response.user!));
-      } else {
-        emit(AuthFailure(response.message ?? "Unknown error occurred"));
-      }
+
+      response.fold(
+        (error) {
+          emit(AuthFailure(error.message));
+        },
+        (user) async {
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setBool('isLoggedIn', true);
+          await prefs.setString('user', jsonEncode(user.toJson()));
+          emit(AuthSuccess(user));
+        },
+      );
     } catch (e) {
       emit(AuthFailure(e.toString()));
     }
@@ -33,15 +35,17 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final response = await _authRepository.register(name, email, password);
 
-      if(response.success && response.user != null){
-        final prefs = await SharedPreferences.getInstance();
-        await prefs.setBool('isLoggedIn', true);
-        await prefs.setString('user', jsonEncode(response.user!.toJson()));
-        await prefs.setString('token', response.token ?? "");
-        emit(AuthSuccess(response.user!));
-      } else {
-        emit(AuthFailure(response.message ?? "Unknown error occurred"));
-      }
+      response.fold(
+        (error) {
+          emit(AuthFailure(error.message));
+        },
+        (user) async {
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setBool('isLoggedIn', true);
+          await prefs.setString('user', jsonEncode(user.toJson()));
+          emit(AuthSuccess(user));
+        },
+      );
     } catch (e) {
       emit(AuthFailure(e.toString()));
     }

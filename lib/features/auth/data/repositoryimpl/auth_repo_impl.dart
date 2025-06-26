@@ -1,4 +1,5 @@
-import 'package:handly/features/auth/domain/models/login_response.dart';
+import 'package:dartz/dartz.dart';
+import 'package:handly/core/errors/failures.dart';
 import 'package:handly/features/auth/domain/models/user.dart';
 import 'package:handly/features/auth/domain/repository/auth_repository.dart';
 
@@ -10,28 +11,24 @@ class AuthRepoImpl extends AuthRepository {
   }
 
   @override
-  Future<LoginResponse> login(String email, String password) async{
+  Future<Either<Failure, User>> login(String email, String password) async{
     try {
       // Simulate API delay
       await Future.delayed(Duration(seconds: 3));
 
       if (email == 'blocked@example.com') {
-        return LoginResponse(success: false, message: "Account is blocked.");
+        return Left(ServerFailures("Account is blocked."));
       }
 
       if (email != 'user@example.com') {
-        return LoginResponse(success: false, message: "User not found.");
-      }
-
-      if (password != '123456') {
-        return LoginResponse(success: false, message: "Invalid password.");
+        return Left(ServerFailures("User not found."));
       }
 
       final user = User(id: '1', name: 'Test User', email: email);
-      return LoginResponse(success: true, token: 'fake_token_abc', user: user);
+      return Right(user);
 
     } catch (e) {
-      return LoginResponse(success: false, message: "Server error occurred.");
+      return Left(ServerFailures(e.toString()));
     }
   }
 
@@ -42,16 +39,15 @@ class AuthRepoImpl extends AuthRepository {
   }
 
   @override
-  Future<LoginResponse> register(String name, String email, String password) async{
+  Future<Either<Failure, User>> register(String name, String email, String password) async{
     try {
       // Simulate API delay
       await Future.delayed(Duration(seconds: 3));
 
       final user = User(id: '1', name: name, email: email);
-      return LoginResponse(success: true, token: 'fake_token_abc', user: user);
-
+      return Right(user);
     } catch (e) {
-      return LoginResponse(success: false, message: "Server error occurred.");
+      return Left(ServerFailures(e.toString()));
     }
   }
 
