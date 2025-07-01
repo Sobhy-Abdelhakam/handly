@@ -6,10 +6,14 @@ import 'package:handly/features/auth/cubit/auth_cubit.dart';
 import 'package:handly/features/auth/data/repositoryimpl/auth_repo_impl.dart';
 import 'package:handly/features/auth/presentation/forget/confirm/confirm_screen.dart';
 import 'package:handly/features/auth/presentation/forget/forget_pass_screen.dart';
-import 'package:handly/features/auth/presentation/home_screen.dart';
 import 'package:handly/features/auth/presentation/init_screen.dart';
 import 'package:handly/features/auth/presentation/login/login_screen.dart';
 import 'package:handly/features/auth/presentation/register/register_screen.dart';
+import 'package:handly/features/category/data/categories_repo.dart';
+import 'package:handly/features/category/logic/category_cubit.dart';
+import 'package:handly/features/home/Presentation/home_screen.dart';
+import 'package:handly/features/product/data/product_repo.dart';
+import 'package:handly/features/product/logic/product_cubit.dart';
 
 class AppRouters {
   Route generateRoute(RouteSettings settings) {
@@ -43,7 +47,20 @@ class AppRouters {
       case Routers.confrimSendEmail:
         return _buildRoute(settings, const ConfirmScreen());
       case Routers.home:
-        return _buildRoute(settings, const HomeScreen());
+        return _buildRoute(settings,
+        MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => CategoryCubit(CategoriesRepo())..getCategories(),
+            ),
+            BlocProvider(
+              create: (context) => ProductCubit(ProductRepo())..getProducts(),
+            ),
+          ],
+          child: const HomeScreen(),
+        )
+        //  const HomeScreen()
+         );
       default:
         return _buildRoute(settings, NotFoundPage());
     }
