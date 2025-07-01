@@ -32,23 +32,5 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
-
-    // Scaffold(
-    //   body: SafeArea(
-    //     child: Center(
-    //       child: Column(
-    //         children: [
-    //           HomeAppBar(),
-    //           const SizedBox(height: 16),
-    //           // SearchBar(),
-    //           SearchContainer(),
-    //           const SizedBox(height: 16),
-    //           SectionHeader(title: 'Categories', onPressed: () {}),
-    //           HomeCategories(),
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
   }
 }
