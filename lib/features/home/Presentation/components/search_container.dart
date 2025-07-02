@@ -7,18 +7,16 @@ class SearchContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: TextField(
-        readOnly: true,
-        onTap: onTap,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.all(12),
-          hintText: 'search for handmade',
-          prefixIcon: Icon(Icons.search),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
-        ),
+    return TextField(
+      readOnly: true,
+      onTap: onTap,
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.all(12),
+        hintText: 'search for handmade',
+        prefixIcon: const Icon(Icons.search),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(50)),
       ),
     );
   }
 }
+

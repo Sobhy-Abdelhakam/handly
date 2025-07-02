@@ -29,29 +29,6 @@ class HomeAppBar extends StatelessWidget {
         ),
       ],
     );
-
-    // AppBar(
-    //   automaticallyImplyLeading: false,
-    //   title: Column(
-    //     crossAxisAlignment: CrossAxisAlignment.start,
-    //     children: [
-    //       Text(
-    //         "Good day for shopping",
-    //         style: Theme.of(context).textTheme.labelMedium,
-    //       ),
-    //       Text(
-    //         "Sobhy Abdel Hakam",
-    //         style: Theme.of(context).textTheme.titleMedium,
-    //       ),
-    //     ],
-    //   ),
-    //   actions: [
-    //     BadgeIcon(
-    //       icon: Icons.shopping_bag_outlined,
-    //       onPressed: () {},
-    //       itemCount: 2,
-    //     ),
-    //   ],
-    // );
   }
 }
+

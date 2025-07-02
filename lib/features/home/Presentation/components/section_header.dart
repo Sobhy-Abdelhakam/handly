@@ -13,19 +13,20 @@ class SectionHeader extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          style: Theme.of(context).textTheme.titleLarge,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
         if (onPressed != null)
           TextButton(
             onPressed: onPressed,
-            child: const Text(
+            child: Text(
               'View all',
-              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
       ],
     );
   }
 }
+
