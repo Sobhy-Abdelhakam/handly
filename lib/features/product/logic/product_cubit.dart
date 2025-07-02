@@ -10,17 +10,20 @@ class ProductCubit extends Cubit<ProductState> {
     emit(ProductLoading());
     final response = await _productRepo.getProducts();
     response.fold(
-      (error) => emit(ProductFailure(error)),
+      (error) => emit(ProductFailure(error.toString())),
       (products) => emit(ProductSuccess(products)),
     );
   }
 
   Future<void> getProductsByCategory(String categoryId) async {
-    emit(ProductLoading());
+    if (state is! ProductSuccess) {
+      emit(ProductLoading());
+    }
     final response = await _productRepo.getProductsByCategory(categoryId);
     response.fold(
-      (error) => emit(ProductFailure(error)),
+      (error) => emit(ProductFailure(error.toString())),
       (products) => emit(ProductSuccess(products)),
     );
   }
 }
+
