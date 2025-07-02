@@ -11,6 +11,7 @@ import 'package:handly/features/auth/presentation/login/login_screen.dart';
 import 'package:handly/features/auth/presentation/register/register_screen.dart';
 import 'package:handly/features/category/data/categories_repo.dart';
 import 'package:handly/features/category/logic/category_cubit.dart';
+import 'package:handly/features/category/logic/category_state.dart';
 import 'package:handly/features/home/Presentation/home_screen.dart';
 import 'package:handly/features/product/data/product_repo.dart';
 import 'package:handly/features/product/logic/product_cubit.dart';
@@ -47,20 +48,29 @@ class AppRouters {
       case Routers.confrimSendEmail:
         return _buildRoute(settings, const ConfirmScreen());
       case Routers.home:
-        return _buildRoute(settings,
-        MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => CategoryCubit(CategoriesRepo())..getCategories(),
-            ),
-            BlocProvider(
-              create: (context) => ProductCubit(ProductRepo())..getProducts(),
-            ),
-          ],
-          child: const HomeScreen(),
-        )
-        //  const HomeScreen()
-         );
+        return _buildRoute(
+            settings,
+            MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) =>
+                      CategoryCubit(CategoriesRepo())..getCategories(),
+                ),
+                BlocProvider(
+                  create: (context) => ProductCubit(ProductRepo()),
+                ),
+              ],
+              child: BlocListener<CategoryCubit, CategoryState>(
+                listener: (context, state) {
+                  if (state is CategorySuccess) {
+                    context
+                        .read<ProductCubit>()
+                        .getProductsByCategory(state.selectedCategory.id);
+                  }
+                },
+                child: const HomeScreen(),
+              ),
+            ));
       default:
         return _buildRoute(settings, NotFoundPage());
     }
