@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:handly/features/home/Presentation/components/badge_icon.dart';
+import 'package:handly/generated/l10n.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -13,11 +14,11 @@ class HomeAppBar extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Good day for shopping",
+              S.of(context).good_day,
               style: Theme.of(context).textTheme.labelMedium,
             ),
             Text(
-              "Sobhy Abdel Hakam",
+              S.of(context).user_name,
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ],
