@@ -1,3 +1,5 @@
+import 'package:handly/features/product/data/seller.dart';
+
 class Product {
   final String id;
   final String title;
@@ -5,7 +7,7 @@ class Product {
   final String photoUrl;
   final double price;
   final String categoryId;
-  final String sellerId;
+  final Seller seller;
   final DateTime createdAt;
 
   Product({
@@ -15,7 +17,7 @@ class Product {
     required this.photoUrl,
     required this.price,
     required this.categoryId,
-    required this.sellerId,
+    required this.seller,
     required this.createdAt,
   });
 }
