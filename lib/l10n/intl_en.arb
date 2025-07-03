@@ -28,5 +28,11 @@
     "dont_have_account": "Don't have an account?",
     "login_success": "Login successful",
     "login_failed": "Login faild, please try again",
-    "done": "Done"
+    "done": "Done",
+
+    "good_day": "Good day for shopping",
+    "user_name": "Sobhy Abdel Hakam",
+    "search_hint": "search for handmade",
+    "Categories": "Categories",
+    "view_all": "View All"
 }

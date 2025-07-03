@@ -298,6 +298,46 @@ class S {
   String get done {
     return Intl.message('Done', name: 'done', desc: '', args: []);
   }
+
+  /// `Good day for shopping`
+  String get good_day {
+    return Intl.message(
+      'Good day for shopping',
+      name: 'good_day',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sobhy Abdel Hakam`
+  String get user_name {
+    return Intl.message(
+      'Sobhy Abdel Hakam',
+      name: 'user_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `search for handmade`
+  String get search_hint {
+    return Intl.message(
+      'search for handmade',
+      name: 'search_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Categories`
+  String get Categories {
+    return Intl.message('Categories', name: 'Categories', desc: '', args: []);
+  }
+
+  /// `View All`
+  String get view_all {
+    return Intl.message('View All', name: 'view_all', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
