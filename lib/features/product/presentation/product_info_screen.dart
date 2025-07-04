@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:handly/features/cart/data/cart_item.dart';
+import 'package:handly/features/cart/logic/cart_cubit.dart';
 import 'package:handly/features/product/data/product.dart';
+import 'package:handly/generated/l10n.dart';
 
 class ProductInfoScreen extends StatelessWidget {
   const ProductInfoScreen({super.key, required this.product});
@@ -14,6 +18,7 @@ class ProductInfoScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
+              height: 300,
               width: double.infinity,
               child: Stack(
                 children: [
@@ -26,7 +31,7 @@ class ProductInfoScreen extends StatelessWidget {
                     top: 40,
                     left: 16,
                     child: CircleAvatar(
-                      backgroundColor: Colors.black.withValues(alpha: 0.5),
+                      backgroundColor: Colors.black.withOpacity(0.5),
                       child: IconButton(
                         icon: const Icon(Icons.arrow_back, color: Colors.white),
                         onPressed: () {
@@ -96,7 +101,7 @@ class ProductInfoScreen extends StatelessWidget {
                       ),
                       ElevatedButton(
                         onPressed: () {},
-                        child: const Text('Follow'),
+                        child: Text(S.of(context).follow),
                       ),
                     ],
                   ),
@@ -109,12 +114,27 @@ class ProductInfoScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            BlocProvider.of<CartCubit>(context).addToCart(
+              CartItem(
+                id: product.id,
+                productName: product.title,
+                price: product.price,
+                imageUrl: product.photoUrl,
+              ),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(S.of(context).added_to_cart),
+                duration: Duration(seconds: 3),
+              ),
+            );
+          },
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 16),
             textStyle: Theme.of(context).textTheme.titleLarge,
           ),
-          child: const Text('Add to Cart'),
+          child: Text(S.of(context).added_to_cart),
         ),
       ),
     );

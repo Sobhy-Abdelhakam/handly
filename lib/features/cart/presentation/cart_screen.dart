@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/features/cart/logic/cart_cubit.dart';
 import 'package:handly/features/cart/logic/cart_state.dart';
 import 'package:handly/features/cart/presentation/widget/cart_item_widget.dart';
+import 'package:handly/generated/l10n.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -10,7 +11,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('My Cart')),
+      appBar: AppBar(title: Text(S.of(context).my_cart)),
       body: BlocListener<CartCubit, CartState>(
         listener: (context, state) {
           if (state is CartItemRemoved) {
@@ -18,7 +19,7 @@ class CartScreen extends StatelessWidget {
               SnackBar(
                 content: Text('${state.removedItem.productName} removed'),
                 action: SnackBarAction(
-                  label: 'Undo',
+                  label: S.of(context).undo,
                   onPressed: () {
                     context.read<CartCubit>().onUndo(state.removedItem);
                   },
@@ -40,7 +41,7 @@ class CartScreen extends StatelessWidget {
                     ? state.items
                     : (state is CartItemRemoved ? state.items : []);
             if (items.isEmpty) {
-              return const Center(child: Text('Your cart is empty'));
+              return Center(child: Text(S.of(context).cart_empty));
             }
             return ListView.builder(
               itemCount: items.length,
@@ -61,12 +62,12 @@ class CartScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Total: ${state.totalPrice.toStringAsFixed(2)}\$',
+                    '${S.of(context).cart_total}: ${state.totalPrice.toStringAsFixed(2)}\$',
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: const Text('Checkout'),
+                    child: Text(S.of(context).Checkout),
                   ),
                 ],
               ),

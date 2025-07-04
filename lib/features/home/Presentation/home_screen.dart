@@ -37,6 +37,7 @@ class HomeScreen extends StatelessWidget {
                   SearchContainer(),
                   const SizedBox(height: 16),
                   SectionHeader(title: S.of(context).Categories),
+                  const SizedBox(height: 8),
                   HomeCategories(),
                   const SizedBox(height: 16),
                   BlocListener<CategoryCubit, CategoryState>(

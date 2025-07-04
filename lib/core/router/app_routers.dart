@@ -9,6 +9,7 @@ import 'package:handly/features/auth/presentation/forget/forget_pass_screen.dart
 import 'package:handly/features/auth/presentation/init_screen.dart';
 import 'package:handly/features/auth/presentation/login/login_screen.dart';
 import 'package:handly/features/auth/presentation/register/register_screen.dart';
+import 'package:handly/features/cart/presentation/cart_screen.dart';
 import 'package:handly/features/home/Presentation/home_screen.dart';
 import 'package:handly/features/product/data/product.dart';
 import 'package:handly/features/product/presentation/product_info_screen.dart';
@@ -49,6 +50,8 @@ class AppRouters {
       case Routers.productDetails:
         final product = settings.arguments as Product;
         return _buildRoute(settings, ProductInfoScreen(product: product));
+      case Routers.cart:
+        return _buildRoute(settings, CartScreen());
       default:
         return _buildRoute(settings, NotFoundPage());
     }

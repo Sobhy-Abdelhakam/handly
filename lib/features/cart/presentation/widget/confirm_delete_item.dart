@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:handly/generated/l10n.dart';
 
 class ConfirmDeleteItem extends StatelessWidget {
   const ConfirmDeleteItem({super.key});
@@ -6,17 +7,17 @@ class ConfirmDeleteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Remove Item"),
-      content: const Text(
-          "Are you sure you want to remove this item from the cart?"),
+      title: Text(S.of(context).remove_Item),
+      content: Text(
+        S.of(context).remove_item_confirmation),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context, false),
-          child: const Text("Cancel"),
+          child: Text(S.of(context).cancel),
         ),
         TextButton(
           onPressed: () => Navigator.pop(context, true),
-          child: const Text("Delete", style: TextStyle(color: Colors.red)),
+          child: Text(S.of(context).delete, style: TextStyle(color: Colors.red)),
         ),
       ],
     );

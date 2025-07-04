@@ -15,23 +15,24 @@ class BadgeIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         IconButton(onPressed: onPressed, icon: Icon(icon)),
         Positioned(
-          right: 0,
+          right: 4,
+          top: 4,
           child: Container(
-            width: 18,
-            height: 18,
+            padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surfaceContainer,
-              borderRadius: BorderRadius.circular(100),
+              shape: BoxShape.circle,
             ),
             child: Center(
               child: Text(
-                itemCount.toString(),
+                '$itemCount',
                 style: Theme.of(
                   context,
-                ).textTheme.labelLarge!.apply(fontSizeFactor: 0.8),
+                ).textTheme.labelLarge?.copyWith(fontSize: 10),
               ),
             ),
           ),
