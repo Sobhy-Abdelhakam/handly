@@ -2,7 +2,6 @@
     "title": "Handly",
     "error": "Error",
     "page_not_found": "Page Not Found!",
-
     "description": "Celebrate the art of craftsmanship. Discover, shop, and support handmade creations made with passion — each piece tells a story.",
     "welcome_back": "Welcome Back",
     "login": "Login",
@@ -29,10 +28,22 @@
     "login_success": "Login successful",
     "login_failed": "Login faild, please try again",
     "done": "Done",
-
     "good_day": "Good day for shopping",
     "user_name": "Sobhy Abdel Hakam",
     "search_hint": "search for handmade",
     "Categories": "Categories",
-    "view_all": "View All"
+    "view_all": "View All",
+    "follow": "Follow",
+    "add_to_cart": "Add to Cart",
+    "added_to_cart": "Added to Cart",
+    "my_cart": "My Cart",
+    "cart_empty": "Your cart is empty",
+    "remove_Item": "Remove Item",
+    "remove_item_confirmation": "Are you sure you want to remove this item from the cart?",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "removed": "Removed",
+    "undo": "Undo",
+    "cart_total": "Cart Total",
+    "Checkout": "Checkout"
 }

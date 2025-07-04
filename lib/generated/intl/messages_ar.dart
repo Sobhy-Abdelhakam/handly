@@ -23,9 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "Categories": MessageLookupByLibrary.simpleMessage("الفئات"),
+    "Checkout": MessageLookupByLibrary.simpleMessage("إتمام الشراء"),
     "already_have_account": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب؟",
     ),
+    "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "cart_empty": MessageLookupByLibrary.simpleMessage("سلة التسوق فارغة"),
+    "cart_total": MessageLookupByLibrary.simpleMessage("إجمالي السلة"),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
@@ -35,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_screen_title": MessageLookupByLibrary.simpleMessage(
       "تم إرسال بريد إلكتروني لإعادة تعيين كلمة المرور",
     ),
+    "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "description": MessageLookupByLibrary.simpleMessage(
       "احتفل بفنون الحرف اليدوية. اكتشف، تسوّق، وادعم إبداعاتنا المصنوعة يدويًا بشغف - كل قطعة تروي قصة.",
     ),
@@ -65,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "login_success": MessageLookupByLibrary.simpleMessage(
       "تم تسجيل الدخول بنجاح",
     ),
+    "my_cart": MessageLookupByLibrary.simpleMessage("سلة التسوق"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "name_min_length": MessageLookupByLibrary.simpleMessage(
       "يجب أن يكون الاسم 3 أحرف على الأقل",
@@ -84,11 +90,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "كلمة المرور مطلوبة",
     ),
     "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "remove_Item": MessageLookupByLibrary.simpleMessage("إزالة العنصر"),
+    "remove_item_confirmation": MessageLookupByLibrary.simpleMessage(
+      "هل أنت متأكد أنك تريد إزالة هذا العنصر من السلة؟",
+    ),
+    "removed": MessageLookupByLibrary.simpleMessage("تمت الإزالة"),
     "search_hint": MessageLookupByLibrary.simpleMessage(
       "ابحث عن الحرف اليدوية",
     ),
     "send": MessageLookupByLibrary.simpleMessage("إرسال"),
     "title": MessageLookupByLibrary.simpleMessage("هاندلي"),
+    "undo": MessageLookupByLibrary.simpleMessage("تراجع"),
     "user_name": MessageLookupByLibrary.simpleMessage("صبحي عبد الحكم"),
     "view_all": MessageLookupByLibrary.simpleMessage("عرض الكل"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),

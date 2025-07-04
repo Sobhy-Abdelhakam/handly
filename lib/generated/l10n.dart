@@ -338,6 +338,86 @@ class S {
   String get view_all {
     return Intl.message('View All', name: 'view_all', desc: '', args: []);
   }
+
+  /// `Follow`
+  String get follow {
+    return Intl.message('Follow', name: 'follow', desc: '', args: []);
+  }
+
+  /// `Add to Cart`
+  String get add_to_cart {
+    return Intl.message('Add to Cart', name: 'add_to_cart', desc: '', args: []);
+  }
+
+  /// `Added to Cart`
+  String get added_to_cart {
+    return Intl.message(
+      'Added to Cart',
+      name: 'added_to_cart',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My Cart`
+  String get my_cart {
+    return Intl.message('My Cart', name: 'my_cart', desc: '', args: []);
+  }
+
+  /// `Your cart is empty`
+  String get cart_empty {
+    return Intl.message(
+      'Your cart is empty',
+      name: 'cart_empty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove Item`
+  String get remove_Item {
+    return Intl.message('Remove Item', name: 'remove_Item', desc: '', args: []);
+  }
+
+  /// `Are you sure you want to remove this item from the cart?`
+  String get remove_item_confirmation {
+    return Intl.message(
+      'Are you sure you want to remove this item from the cart?',
+      name: 'remove_item_confirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message('Delete', name: 'delete', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Removed`
+  String get removed {
+    return Intl.message('Removed', name: 'removed', desc: '', args: []);
+  }
+
+  /// `Undo`
+  String get undo {
+    return Intl.message('Undo', name: 'undo', desc: '', args: []);
+  }
+
+  /// `Cart Total`
+  String get cart_total {
+    return Intl.message('Cart Total', name: 'cart_total', desc: '', args: []);
+  }
+
+  /// `Checkout`
+  String get Checkout {
+    return Intl.message('Checkout', name: 'Checkout', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

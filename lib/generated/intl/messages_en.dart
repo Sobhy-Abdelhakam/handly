@@ -23,9 +23,15 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "Categories": MessageLookupByLibrary.simpleMessage("Categories"),
+    "Checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
+    "add_to_cart": MessageLookupByLibrary.simpleMessage("Add to Cart"),
+    "added_to_cart": MessageLookupByLibrary.simpleMessage("Added to Cart"),
     "already_have_account": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "cart_empty": MessageLookupByLibrary.simpleMessage("Your cart is empty"),
+    "cart_total": MessageLookupByLibrary.simpleMessage("Cart Total"),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "Confirm Password",
     ),
@@ -35,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_screen_title": MessageLookupByLibrary.simpleMessage(
       "Password Reset Email Sent",
     ),
+    "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "description": MessageLookupByLibrary.simpleMessage(
       "Celebrate the art of craftsmanship. Discover, shop, and support handmade creations made with passion — each piece tells a story.",
     ),
@@ -45,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "email_required": MessageLookupByLibrary.simpleMessage("Email is required"),
     "error": MessageLookupByLibrary.simpleMessage("Error"),
+    "follow": MessageLookupByLibrary.simpleMessage("Follow"),
     "forget_pass_sup_title": MessageLookupByLibrary.simpleMessage(
       "Don’t worry sometimes people can forget too, enter your email and we will send you a password reset link.",
     ),
@@ -61,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Login faild, please try again",
     ),
     "login_success": MessageLookupByLibrary.simpleMessage("Login successful"),
+    "my_cart": MessageLookupByLibrary.simpleMessage("My Cart"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "name_min_length": MessageLookupByLibrary.simpleMessage(
       "Name must be at least 3 characters",
@@ -78,9 +87,15 @@ class MessageLookup extends MessageLookupByLibrary {
       "Password is required",
     ),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
+    "remove_Item": MessageLookupByLibrary.simpleMessage("Remove Item"),
+    "remove_item_confirmation": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to remove this item from the cart?",
+    ),
+    "removed": MessageLookupByLibrary.simpleMessage("Removed"),
     "search_hint": MessageLookupByLibrary.simpleMessage("search for handmade"),
     "send": MessageLookupByLibrary.simpleMessage("Send"),
     "title": MessageLookupByLibrary.simpleMessage("Handly"),
+    "undo": MessageLookupByLibrary.simpleMessage("Undo"),
     "user_name": MessageLookupByLibrary.simpleMessage("Sobhy Abdel Hakam"),
     "view_all": MessageLookupByLibrary.simpleMessage("View All"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("Welcome Back"),
