@@ -12,6 +12,8 @@ class Routers {
   static const String profile = '/profile';
 
   static const String search = '/search';
+  static const String checkout = '/checkout';
+  static const String checkoutSuccess = '/checkout-success';
   static const String notification = '/notification';
   static const String productDetails = '/product';
   static const String orderNow = '/order-now';

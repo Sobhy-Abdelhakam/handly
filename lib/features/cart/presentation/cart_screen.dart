@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:handly/core/router/routers.dart';
 import 'package:handly/features/cart/logic/cart_cubit.dart';
 import 'package:handly/features/cart/logic/cart_state.dart';
 import 'package:handly/features/cart/presentation/widget/cart_item_widget.dart';
@@ -66,7 +67,12 @@ class CartScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routers.checkout, arguments: {
+                        'cartItems': state.items,
+                        'subtotal': state.totalPrice,
+                      });
+                    },
                     child: Text(S.of(context).Checkout),
                   ),
                 ],

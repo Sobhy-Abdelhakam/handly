@@ -9,7 +9,11 @@ import 'package:handly/features/auth/presentation/forget/forget_pass_screen.dart
 import 'package:handly/features/auth/presentation/init_screen.dart';
 import 'package:handly/features/auth/presentation/login/login_screen.dart';
 import 'package:handly/features/auth/presentation/register/register_screen.dart';
+import 'package:handly/features/cart/data/cart_item.dart';
 import 'package:handly/features/cart/presentation/cart_screen.dart';
+import 'package:handly/features/checkout/logic/checkout_cubit.dart';
+import 'package:handly/features/checkout/presentation/screen/checkout_screen.dart';
+import 'package:handly/features/checkout/presentation/screen/order_confirmation_screen.dart';
 import 'package:handly/features/home/Presentation/home_screen.dart';
 import 'package:handly/features/product/data/product.dart';
 import 'package:handly/features/product/presentation/product_info_screen.dart';
@@ -52,6 +56,19 @@ class AppRouters {
         return _buildRoute(settings, ProductInfoScreen(product: product));
       case Routers.cart:
         return _buildRoute(settings, CartScreen());
+      case Routers.checkout:
+        final args = settings.arguments as Map<String, dynamic>;
+        final cartItems = args['cartItems'] as List<CartItem>;
+        final subtotal = args['subtotal'] as double;
+        return _buildRoute(
+          settings,
+          BlocProvider(
+            create: (context) => CheckoutCubit(subtotal, cartItems),
+            child: CheckoutScreen(cartItems: cartItems, subtotal: subtotal),
+          ),
+        );
+      case Routers.checkoutSuccess:
+        return _buildRoute(settings, const OrderConfirmationScreen());
       default:
         return _buildRoute(settings, NotFoundPage());
     }
