@@ -11,6 +11,7 @@ import 'package:handly/features/checkout/presentation/components/place_order_but
 import 'package:handly/features/checkout/presentation/components/delivery_selector.dart';
 import 'package:handly/features/checkout/presentation/components/order_summary.dart';
 import 'package:handly/features/checkout/presentation/components/payment_method_selector.dart';
+import 'package:handly/generated/l10n.dart';
 
 class CheckoutScreen extends StatelessWidget {
   final List<CartItem> cartItems;
@@ -22,14 +23,14 @@ class CheckoutScreen extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { // localize
     return Scaffold(
-      appBar: AppBar(title: const Text('Checkout')),
+      appBar: AppBar(title: Text(S.of(context).checkout)),
       body: BlocListener<CheckoutCubit, CheckoutState>(
         listener: (context, state) {
           if (state.status == CheckoutStatus.error) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Error: fill all required fields')),
+              SnackBar(content: Text(S.of(context).fill_required_fields_error)),
             );
           }
           if (state.status == CheckoutStatus.success) {
@@ -76,7 +77,7 @@ class CheckoutScreen extends StatelessWidget {
                   total: state.total,
                 ),
                 const SizedBox(height: 24),
-                PlaceOrderButton(onPressed: () {}, text: 'Place Order'),
+                PlaceOrderButton(onPressed: () {}, text: S.of(context).place_order),
               ],
             ),
           );

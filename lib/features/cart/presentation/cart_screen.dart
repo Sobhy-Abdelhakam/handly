@@ -73,7 +73,7 @@ class CartScreen extends StatelessWidget {
                         'subtotal': state.totalPrice,
                       });
                     },
-                    child: Text(S.of(context).Checkout),
+                    child: Text(S.of(context).checkout),
                   ),
                 ],
               ),

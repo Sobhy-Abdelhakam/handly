@@ -415,8 +415,233 @@ class S {
   }
 
   /// `Checkout`
-  String get Checkout {
-    return Intl.message('Checkout', name: 'Checkout', desc: '', args: []);
+  String get checkout {
+    return Intl.message('Checkout', name: 'checkout', desc: '', args: []);
+  }
+
+  /// `Your Cart`
+  String get your_cart {
+    return Intl.message('Your Cart', name: 'your_cart', desc: '', args: []);
+  }
+
+  /// `Delivery Option`
+  String get delivery_option {
+    return Intl.message(
+      'Delivery Option',
+      name: 'delivery_option',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home Delivery`
+  String get home_delivery {
+    return Intl.message(
+      'Home Delivery',
+      name: 'home_delivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In-Store Pickup`
+  String get in_store_pickup {
+    return Intl.message(
+      'In-Store Pickup',
+      name: 'in_store_pickup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Method`
+  String get payment_method {
+    return Intl.message(
+      'Payment Method',
+      name: 'payment_method',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Credit Card Details`
+  String get credit_card_details {
+    return Intl.message(
+      'Credit Card Details',
+      name: 'credit_card_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cardholder Name`
+  String get cardholder_name {
+    return Intl.message(
+      'Cardholder Name',
+      name: 'cardholder_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Card Number`
+  String get card_number {
+    return Intl.message('Card Number', name: 'card_number', desc: '', args: []);
+  }
+
+  /// `Expiry (MM/YY)`
+  String get expiry_date {
+    return Intl.message(
+      'Expiry (MM/YY)',
+      name: 'expiry_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CVV`
+  String get cvv {
+    return Intl.message('CVV', name: 'cvv', desc: '', args: []);
+  }
+
+  /// `Vodafone Cash`
+  String get vodafone_cash_title {
+    return Intl.message(
+      'Vodafone Cash',
+      name: 'vodafone_cash_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vodafone Number`
+  String get vodafone_number {
+    return Intl.message(
+      'Vodafone Number',
+      name: 'vodafone_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Summary`
+  String get order_summary {
+    return Intl.message(
+      'Order Summary',
+      name: 'order_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subtotal`
+  String get subtotal {
+    return Intl.message('Subtotal', name: 'subtotal', desc: '', args: []);
+  }
+
+  /// `Delivery Fee`
+  String get delivery_fee {
+    return Intl.message(
+      'Delivery Fee',
+      name: 'delivery_fee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total`
+  String get total {
+    return Intl.message('Total', name: 'total', desc: '', args: []);
+  }
+
+  /// `Place Order`
+  String get place_order {
+    return Intl.message('Place Order', name: 'place_order', desc: '', args: []);
+  }
+
+  /// `Loading...`
+  String get loading {
+    return Intl.message('Loading...', name: 'loading', desc: '', args: []);
+  }
+
+  /// `Required`
+  String get required_field {
+    return Intl.message('Required', name: 'required_field', desc: '', args: []);
+  }
+
+  /// `Invalid phone number`
+  String get invalid_phone {
+    return Intl.message(
+      'Invalid phone number',
+      name: 'invalid_phone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select delivery and payment options`
+  String get select_delivery_payment_error {
+    return Intl.message(
+      'Please select delivery and payment options',
+      name: 'select_delivery_payment_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please fill all required fields correctly.`
+  String get fill_required_fields_error {
+    return Intl.message(
+      'Please fill all required fields correctly.',
+      name: 'fill_required_fields_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cash on Delivery`
+  String get cash_on_delivery {
+    return Intl.message(
+      'Cash on Delivery',
+      name: 'cash_on_delivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Credit Card`
+  String get credit_card {
+    return Intl.message('Credit Card', name: 'credit_card', desc: '', args: []);
+  }
+
+  /// `Vodafone Cash`
+  String get vodafone_cash {
+    return Intl.message(
+      'Vodafone Cash',
+      name: 'vodafone_cash',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Confirmed`
+  String get order_confirmation {
+    return Intl.message(
+      'Order Confirmed',
+      name: 'order_confirmation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank you for your order! Your order has been placed successfully.`
+  String get order_confirmation_subtitle {
+    return Intl.message(
+      'Thank you for your order! Your order has been placed successfully.',
+      name: 'order_confirmation_subtitle',
+      desc: '',
+      args: [],
+    );
   }
 }
 

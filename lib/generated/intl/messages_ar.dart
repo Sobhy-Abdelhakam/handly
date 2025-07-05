@@ -23,13 +23,22 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "Categories": MessageLookupByLibrary.simpleMessage("الفئات"),
-    "Checkout": MessageLookupByLibrary.simpleMessage("إتمام الشراء"),
+    "add_to_cart": MessageLookupByLibrary.simpleMessage("إضافة إلى السلة"),
+    "added_to_cart": MessageLookupByLibrary.simpleMessage(
+      "تمت الإضافة إلى السلة",
+    ),
     "already_have_account": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب؟",
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "card_number": MessageLookupByLibrary.simpleMessage("رقم البطاقة"),
+    "cardholder_name": MessageLookupByLibrary.simpleMessage("اسم صاحب البطاقة"),
     "cart_empty": MessageLookupByLibrary.simpleMessage("سلة التسوق فارغة"),
     "cart_total": MessageLookupByLibrary.simpleMessage("إجمالي السلة"),
+    "cash_on_delivery": MessageLookupByLibrary.simpleMessage(
+      "الدفع عند الاستلام",
+    ),
+    "checkout": MessageLookupByLibrary.simpleMessage("إتمام الشراء"),
     "confirm_password": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
@@ -39,7 +48,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "confirm_screen_title": MessageLookupByLibrary.simpleMessage(
       "تم إرسال بريد إلكتروني لإعادة تعيين كلمة المرور",
     ),
+    "credit_card": MessageLookupByLibrary.simpleMessage("بطاقة ائتمان"),
+    "credit_card_details": MessageLookupByLibrary.simpleMessage(
+      "تفاصيل بطاقة الائتمان",
+    ),
+    "cvv": MessageLookupByLibrary.simpleMessage("رمز التحقق (CVV)"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+    "delivery_fee": MessageLookupByLibrary.simpleMessage("رسوم التوصيل"),
+    "delivery_option": MessageLookupByLibrary.simpleMessage("طريقة التوصيل"),
     "description": MessageLookupByLibrary.simpleMessage(
       "احتفل بفنون الحرف اليدوية. اكتشف، تسوّق، وادعم إبداعاتنا المصنوعة يدويًا بشغف - كل قطعة تروي قصة.",
     ),
@@ -50,6 +66,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "البريد الإلكتروني مطلوب",
     ),
     "error": MessageLookupByLibrary.simpleMessage("خطأ"),
+    "expiry_date": MessageLookupByLibrary.simpleMessage(
+      "تاريخ الانتهاء (شهر/سنة)",
+    ),
+    "fill_required_fields_error": MessageLookupByLibrary.simpleMessage(
+      "يرجى تعبئة جميع الحقول المطلوبة بشكل صحيح",
+    ),
+    "follow": MessageLookupByLibrary.simpleMessage("متابعة"),
     "forget_pass_sup_title": MessageLookupByLibrary.simpleMessage(
       "لا تقلق، ففي بعض الأحيان قد ينسى بعض الأشخاص ذلك، أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة تعيين كلمة المرور.",
     ),
@@ -60,9 +83,17 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل نسيت كلمة المرور؟",
     ),
     "good_day": MessageLookupByLibrary.simpleMessage("يوم جيد للتسوق"),
+    "home_delivery": MessageLookupByLibrary.simpleMessage("توصيل إلى المنزل"),
+    "in_store_pickup": MessageLookupByLibrary.simpleMessage(
+      "الاستلام من المتجر",
+    ),
     "invalid_email": MessageLookupByLibrary.simpleMessage(
       "البريد الإلكتروني غير صالح",
     ),
+    "invalid_phone": MessageLookupByLibrary.simpleMessage(
+      "رقم الهاتف غير صحيح",
+    ),
+    "loading": MessageLookupByLibrary.simpleMessage("جارٍ التحميل..."),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "login_failed": MessageLookupByLibrary.simpleMessage(
       "فشل تسجيل الدخول، يرجي المحاولة مرة أخرى",
@@ -79,6 +110,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "يجب أن يحتوي الاسم على أحرف ومسافات فقط",
     ),
     "name_required": MessageLookupByLibrary.simpleMessage("الاسم مطلوب"),
+    "order_confirmation": MessageLookupByLibrary.simpleMessage(
+      "تم تأكيد الطلب",
+    ),
+    "order_confirmation_subtitle": MessageLookupByLibrary.simpleMessage(
+      "شكرًا لطلبك! تم إتمام طلبك بنجاح.",
+    ),
+    "order_summary": MessageLookupByLibrary.simpleMessage("ملخص الطلب"),
     "page_not_found": MessageLookupByLibrary.simpleMessage(
       "الصفحة غير موجودة!",
     ),
@@ -89,20 +127,32 @@ class MessageLookup extends MessageLookupByLibrary {
     "password_required": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور مطلوبة",
     ),
+    "payment_method": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
+    "place_order": MessageLookupByLibrary.simpleMessage("إتمام الطلب"),
     "register": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "remove_Item": MessageLookupByLibrary.simpleMessage("إزالة العنصر"),
     "remove_item_confirmation": MessageLookupByLibrary.simpleMessage(
       "هل أنت متأكد أنك تريد إزالة هذا العنصر من السلة؟",
     ),
     "removed": MessageLookupByLibrary.simpleMessage("تمت الإزالة"),
+    "required_field": MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
     "search_hint": MessageLookupByLibrary.simpleMessage(
       "ابحث عن الحرف اليدوية",
     ),
+    "select_delivery_payment_error": MessageLookupByLibrary.simpleMessage(
+      "يرجى اختيار طريقة التوصيل وطريقة الدفع",
+    ),
     "send": MessageLookupByLibrary.simpleMessage("إرسال"),
+    "subtotal": MessageLookupByLibrary.simpleMessage("المجموع الفرعي"),
     "title": MessageLookupByLibrary.simpleMessage("هاندلي"),
+    "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "undo": MessageLookupByLibrary.simpleMessage("تراجع"),
     "user_name": MessageLookupByLibrary.simpleMessage("صبحي عبد الحكم"),
     "view_all": MessageLookupByLibrary.simpleMessage("عرض الكل"),
+    "vodafone_cash": MessageLookupByLibrary.simpleMessage("فودافون كاش"),
+    "vodafone_cash_title": MessageLookupByLibrary.simpleMessage("فودافون كاش"),
+    "vodafone_number": MessageLookupByLibrary.simpleMessage("رقم فودافون"),
     "welcome_back": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك"),
+    "your_cart": MessageLookupByLibrary.simpleMessage("عربة التسوق"),
   };
 }

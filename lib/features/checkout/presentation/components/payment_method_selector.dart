@@ -5,6 +5,7 @@ import 'package:handly/features/checkout/model/payment_method.dart';
 import 'package:handly/features/checkout/presentation/widget/credit_card_form.dart';
 import 'package:handly/features/checkout/presentation/widget/payment_option_tile.dart';
 import 'package:handly/features/checkout/presentation/widget/vodafone_cash_form.dart';
+import 'package:handly/generated/l10n.dart';
 
 class PaymentMethodSelector extends StatelessWidget {
   const PaymentMethodSelector({super.key, required this.paymentMethods, this.selectedPaymentMethod});
@@ -18,8 +19,8 @@ class PaymentMethodSelector extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Payment Method",
+        Text(
+          S.of(context).payment_method,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),

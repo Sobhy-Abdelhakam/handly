@@ -15,7 +15,7 @@ class PaymentOptionTile extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       child: ListTile(
         leading: Image.asset(method.icon, width: 32),
-        title: Text(method.name),
+        title: Text(method.localizedName(context)),
         trailing: isSelected ? const Icon(Icons.check_circle, color: Colors.green) : null,
         onTap: onTap,
       ),

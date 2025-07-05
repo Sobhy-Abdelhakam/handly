@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:handly/generated/l10n.dart';
 
 class OrderSummary extends StatelessWidget {
   const OrderSummary({super.key, required this.subtotal, required this.deliveryFee, required this.total});
@@ -12,14 +13,14 @@ class OrderSummary extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Order Summary",
+        Text(
+          S.of(context).order_summary,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
-        _priceRow("Subtotal", subtotal),
-        _priceRow("Delivery Fee", deliveryFee),
+        _priceRow(S.of(context).subtotal, subtotal),
+        _priceRow(S.of(context).delivery_fee, deliveryFee),
         const Divider(),
-        _priceRow("Total", total, isTotal: true),
+        _priceRow(S.of(context).total, total, isTotal: true),
       ],
     );
   }

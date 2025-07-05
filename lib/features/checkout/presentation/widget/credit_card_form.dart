@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/features/checkout/logic/checkout_cubit.dart';
 import 'package:handly/features/checkout/logic/expire_date_formatter.dart';
 import 'package:handly/features/checkout/model/credit_card_info.dart';
+import 'package:handly/generated/l10n.dart';
 
 class CreditCardForm extends StatefulWidget {
   const CreditCardForm({super.key});
@@ -46,19 +47,19 @@ class _CreditCardFormState extends State<CreditCardForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Credit Card Details",
+          Text(
+            S.of(context).credit_card_details,
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
 
           _buildTextField(
-            "Card Holder",
+            S.of(context).cardholder_name,
             _holderNameController,
             icon: Icons.person_outline,
           ),
           _buildTextField(
-            "Card Number",
+            S.of(context).card_number,
             _cardNumberController,
             hint: "XXXX XXXX XXXX XXXX",
             icon: Icons.credit_card,
@@ -72,7 +73,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
             children: [
               Expanded(
                 child: _buildTextField(
-                  "Expiry Date",
+                  S.of(context).expiry_date,
                   _expiryController,
                   hint: "MM/YY",
                   icon: Icons.date_range,
@@ -86,7 +87,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
               const SizedBox(width: 16),
               Expanded(
                 child: _buildTextField(
-                  "CVV",
+                  S.of(context).cvv,
                   _cvvController,
                   hint: "123",
                   keyboard: TextInputType.number,

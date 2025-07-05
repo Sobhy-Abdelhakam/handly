@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/features/checkout/logic/checkout_cubit.dart';
 import 'package:handly/features/checkout/model/vodafone_cash_info.dart';
+import 'package:handly/generated/l10n.dart';
 
 class VodafoneCashForm extends StatefulWidget {
 
@@ -36,20 +37,20 @@ class _VodafoneCashFormState extends State<VodafoneCashForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Vodafone Cash", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+           Text(S.of(context).vodafone_cash_title, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           const SizedBox(height: 8),
           TextFormField(
             controller: _phoneController,
             keyboardType: TextInputType.phone,
             decoration: InputDecoration(
-              labelText: "Vodafone Number",
+              labelText: S.of(context).vodafone_number,
               hintText: "010XXXXXXXX",
               prefixIcon: const Icon(Icons.phone_android),
               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
             ),
             validator: (val) {
-              if (val == null || val.isEmpty) return "Required";
-              if (!RegExp(r"^01[0-2,5]{1}[0-9]{8}$").hasMatch(val)) return "Invalid number";
+              if (val == null || val.isEmpty) return S.of(context).required_field;
+              if (!RegExp(r"^01[0-2,5]{1}[0-9]{8}$").hasMatch(val)) return S.of(context).invalid_phone;
               return null;
             },
           ),
