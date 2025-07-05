@@ -1,0 +1,4 @@
+enum DeliveryOption {
+  homeDelivery,
+  inStorePickup,
+}
