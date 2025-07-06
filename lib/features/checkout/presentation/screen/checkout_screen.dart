@@ -24,64 +24,74 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(S.of(context).checkout)),
-      body: BlocListener<CheckoutCubit, CheckoutState>(
-        listener: (context, state) {
-          if (state.status == CheckoutStatus.error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(S.of(context).fill_required_fields_error)),
-            );
-          }
-          if (state.status == CheckoutStatus.success) {
-            Navigator.of(context).pushReplacementNamed(Routers.checkoutSuccess);
-          }
-        },
-        child: BlocBuilder<CheckoutCubit, CheckoutState>(
-          builder: (_, state) {
-            return SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
+    return BlocProvider(
+      create: (context) => CheckoutCubit(subtotal, cartItems),
+      child: Scaffold(
+        appBar: AppBar(title: Text(S.of(context).checkout)),
+        body: BlocListener<CheckoutCubit, CheckoutState>(
+          listener: (context, state) {
+            if (state.status == CheckoutStatus.error) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(S.of(context).fill_required_fields_error),
+                ),
+              );
+            }
+            if (state.status == CheckoutStatus.success) {
+              Navigator.of(
+                context,
+              ).pushReplacementNamed(Routers.checkoutSuccess);
+            }
+          },
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: BlocBuilder<CheckoutCubit, CheckoutState>(
+              builder: (context, state) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 16,
+                  children: [
+                    CartItems(cartItems: state.cartItems),
+                    DeliverySelector(
+                      selectedDeliveryOption: state.selectedDeliveryOption,
+                      deliveryOpetions: DeliveryOption.values,
+                    ),
+                    PaymentMethodSelector(
+                      paymentMethods: [
+                        const CashOnDelivery(),
+                        const CreditCard(),
+                        const VodafoneCash(),
+                      ],
+                      selectedPaymentMethod: state.selectedPaymentMethod,
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        ),
+        bottomNavigationBar: Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 16,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  CartItems(cartItems: state.cartItems),
-                  DeliverySelector(
-                    selectedDeliveryOption: state.selectedDeliveryOption,
-                    deliveryOpetions: DeliveryOption.values,
+                  BlocBuilder<CheckoutCubit, CheckoutState>(
+                    builder: (context, state) {
+                      return OrderSummary(
+                        subtotal: state.subtotal,
+                        deliveryFee: state.deliveryFee,
+                        total: state.total,
+                      );
+                    },
                   ),
-                  PaymentMethodSelector(
-                    paymentMethods: [
-                      const CashOnDelivery(),
-                      const CreditCard(),
-                      const VodafoneCash(),
-                    ],
-                    selectedPaymentMethod: state.selectedPaymentMethod,
+                  const SizedBox(height: 24),
+                  PlaceOrderButton(
+                    onPressed: () {},
+                    text: S.of(context).place_order,
                   ),
                 ],
               ),
-            );
-          },
         ),
-      ),
-      bottomNavigationBar: BlocBuilder<CheckoutCubit, CheckoutState>(
-        builder: (context, state) {
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                OrderSummary(
-                  subtotal: state.subtotal,
-                  deliveryFee: state.deliveryFee,
-                  total: state.total,
-                ),
-                const SizedBox(height: 24),
-                PlaceOrderButton(onPressed: () {}, text: S.of(context).place_order),
-              ],
-            ),
-          );
-        },
       ),
     );
   }

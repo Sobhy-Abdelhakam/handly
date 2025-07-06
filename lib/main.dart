@@ -3,7 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:handly/core/controllers/app_bloc_observer.dart';
 import 'package:handly/core/router/app_routers.dart';
+import 'package:handly/features/auth/cubit/auth_cubit.dart';
+import 'package:handly/features/auth/cubit/auth_state.dart';
+import 'package:handly/features/auth/data/repositoryimpl/auth_repo_impl.dart';
+import 'package:handly/features/auth/presentation/login/login_screen.dart';
+import 'package:handly/features/cart/logic/cart_cubit.dart';
+import 'package:handly/features/category/data/categories_repo.dart';
+import 'package:handly/features/category/logic/category_cubit.dart';
+import 'package:handly/features/category/logic/category_state.dart';
 import 'package:handly/features/home/Presentation/home_screen.dart';
+import 'package:handly/features/product/data/product_repo.dart';
+import 'package:handly/features/product/logic/product_cubit.dart';
 import 'package:handly/generated/l10n.dart';
 
 void main() {
@@ -16,8 +26,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        locale: const Locale('ar'),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthCubit(AuthRepoImpl())..checkAuthStatus(),
+        ),
+        BlocProvider(
+          create: (context) => CategoryCubit(CategoriesRepo())..getCategories(),
+        ),
+        BlocProvider(
+          create: (context) => ProductCubit(ProductRepo()),
+        ),
+        BlocProvider(
+          create: (context) => CartCubit(),
+        ),
+      ],
+      child: MaterialApp(
+        // locale: const Locale('ar'),
         localizationsDelegates: [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
@@ -40,7 +65,24 @@ class MyApp extends StatelessWidget {
           ),
         ),
         onGenerateRoute: AppRouters().generateRoute,
-        home: const HomeScreen(),
+        home: BlocBuilder<AuthCubit, AuthState>(
+          builder: (context, state) {
+            if (state is AuthSuccess) {
+              return BlocListener<CategoryCubit, CategoryState>(
+                listener: (context, state) {
+                  if (state is CategorySuccess) {
+                    context
+                        .read<ProductCubit>()
+                        .getProductsByCategory(state.selectedCategory.id);
+                  }
+                },
+                child: const HomeScreen(),
+              );
+            }
+            return const LoginScreen();
+          },
+        ),
+      ),
     );
   }
 }
