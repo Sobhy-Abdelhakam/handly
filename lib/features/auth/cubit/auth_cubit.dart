@@ -61,5 +61,19 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  Future<void> logout() async {
+    await _authRepository.logout();
+    emit(AuthInitial());
+  }
+
+  Future<void> checkAuthStatus() async {
+    final user = await _authRepository.getCurrentUser();
+    if (user != null) {
+      emit(AuthSuccess(user));
+    } else {
+      emit(AuthInitial());
+    }
+  }
+
   void resetState() => emit(AuthInitial());
 }

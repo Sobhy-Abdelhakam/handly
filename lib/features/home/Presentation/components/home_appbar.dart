@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/core/router/routers.dart';
+import 'package:handly/features/auth/cubit/auth_cubit.dart';
 import 'package:handly/features/cart/logic/cart_cubit.dart';
 import 'package:handly/features/cart/logic/cart_state.dart';
 import 'package:handly/features/home/Presentation/components/badge_icon.dart';
@@ -27,11 +28,21 @@ class HomeAppBar extends StatelessWidget {
             ),
           ],
         ),
-        BlocBuilder<CartCubit, CartState>(
-          builder: (context, state) {
-            final itemCount = state is CartLoaded ? state.items.length : 0;
-            return _buildCartIcon(context, itemCount);
-          },
+        Row(
+          children: [
+            BlocBuilder<CartCubit, CartState>(
+              builder: (context, state) {
+                final itemCount = state is CartLoaded ? state.items.length : 0;
+                return _buildCartIcon(context, itemCount);
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () {
+                context.read<AuthCubit>().logout();
+              },
+            ),
+          ],
         ),
       ],
     );
