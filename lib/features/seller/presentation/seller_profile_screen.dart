@@ -7,11 +7,12 @@ import 'package:handly/features/seller/logic/seller_profile_cubit.dart';
 import 'package:handly/features/seller/logic/seller_profile_state.dart';
 
 class SellerProfileScreen extends StatelessWidget {
-  const SellerProfileScreen({super.key});
+  const SellerProfileScreen({super.key, required this.seller});
+
+  final Seller seller;
 
   @override
   Widget build(BuildContext context) {
-    final seller = ModalRoute.of(context)?.settings.arguments as Seller;
     return Scaffold(
       appBar: AppBar(title: Text(seller.name)),
       body: BlocProvider(

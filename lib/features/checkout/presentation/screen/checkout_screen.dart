@@ -23,7 +23,7 @@ class CheckoutScreen extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) { // localize
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(S.of(context).checkout)),
       body: BlocListener<CheckoutCubit, CheckoutState>(

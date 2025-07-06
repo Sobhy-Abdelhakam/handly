@@ -16,6 +16,7 @@ import 'package:handly/features/checkout/presentation/screen/checkout_screen.dar
 import 'package:handly/features/checkout/presentation/screen/order_confirmation_screen.dart';
 import 'package:handly/features/home/Presentation/home_screen.dart';
 import 'package:handly/features/product/data/product.dart';
+import 'package:handly/features/product/data/seller.dart';
 import 'package:handly/features/product/presentation/product_info_screen.dart';
 import 'package:handly/features/seller/presentation/seller_profile_screen.dart';
 
@@ -71,7 +72,8 @@ class AppRouters {
       case Routers.checkoutSuccess:
         return _buildRoute(settings, const OrderConfirmationScreen());
       case Routers.userProfile:
-        return _buildRoute(settings, SellerProfileScreen());
+        final seller = settings.arguments as Seller;
+        return _buildRoute(settings, SellerProfileScreen(seller: seller));
       default:
         return _buildRoute(settings, NotFoundPage());
     }
