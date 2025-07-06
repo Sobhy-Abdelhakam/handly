@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:handly/core/router/routers.dart';
 import 'package:handly/features/cart/data/cart_item.dart';
 import 'package:handly/features/cart/logic/cart_cubit.dart';
 import 'package:handly/features/product/data/product.dart';
@@ -66,44 +67,54 @@ class ProductInfoScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const SizedBox(height: 24),
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 24,
-                        backgroundImage: NetworkImage(product.seller.imageUrl),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              product.seller.name,
-                              style: Theme.of(context).textTheme.titleLarge,
-                            ),
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                  size: 20,
-                                ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  product.seller.rating.toString(),
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
-                              ],
-                            ),
-                          ],
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(
+                        Routers.userProfile,
+                        arguments: product.seller,
+                      );
+                    },
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 24,
+                          backgroundImage: NetworkImage(
+                            product.seller.imageUrl,
+                          ),
                         ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text(S.of(context).follow),
-                      ),
-                    ],
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                product.seller.name,
+                                style: Theme.of(context).textTheme.titleLarge,
+                              ),
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                    size: 20,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    product.seller.rating.toString(),
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text(S.of(context).follow),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -115,7 +126,7 @@ class ProductInfoScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: ElevatedButton(
           onPressed: () {
-            BlocProvider.of<CartCubit>(context).addToCart(
+            context.read<CartCubit>().addToCart(
               CartItem(
                 id: product.id,
                 productName: product.title,
@@ -126,7 +137,7 @@ class ProductInfoScreen extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(S.of(context).added_to_cart),
-                duration: Duration(seconds: 3),
+                duration: const Duration(seconds: 1),
               ),
             );
           },
@@ -134,7 +145,7 @@ class ProductInfoScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 16),
             textStyle: Theme.of(context).textTheme.titleLarge,
           ),
-          child: Text(S.of(context).added_to_cart),
+          child: Text(S.of(context).add_to_cart),
         ),
       ),
     );

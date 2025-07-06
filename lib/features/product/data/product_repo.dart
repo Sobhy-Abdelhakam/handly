@@ -23,4 +23,15 @@ class ProductRepo {
       return Left(ServerFailures(e.toString()));
     }
   }
+
+  Future<Either<Failure, List<Product>>> getProductsBySeller(
+      String sellerId) async {
+    try {
+      final products =
+          dummyProducts.where((element) => element.seller.id == sellerId).toList();
+      return Right(products);
+    } catch (e) {
+      return Left(ServerFailures(e.toString()));
+    }
+  }
 }

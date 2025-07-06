@@ -14,6 +14,7 @@ final List<Product> dummyProducts = [
         name: 'Pottery Shop',
         imageUrl: 'https://th.bing.com/th/id/R.9b48642de2a7a5365b743c93651097b5?rik=BSFHuctwdHOcHg&pid=ImgRaw&r=0',
         rating: 4.5,
+        bio: 'We sell the best pottery in town!',
       ),
       createdAt: DateTime.now()),
   Product(
@@ -28,6 +29,7 @@ final List<Product> dummyProducts = [
         name: 'Porcelain World',
         imageUrl: 'https://th.bing.com/th/id/R.9b48642de2a7a5365b743c93651097b5?rik=BSFHuctwdHOcHg&pid=ImgRaw&r=0',
         rating: 4.8,
+        bio: 'The most beautiful porcelain in the world!',
       ),
       createdAt: DateTime.now()),
   Product(
@@ -42,6 +44,7 @@ final List<Product> dummyProducts = [
         name: 'Wooden Wonders',
         imageUrl: 'https://th.bing.com/th/id/R.9b48642de2a7a5365b743c93651097b5?rik=BSFHuctwdHOcHg&pid=ImgRaw&r=0',
         rating: 4.2,
+        bio: 'Hand-carved wooden items with love.',
       ),
       createdAt: DateTime.now()),
   Product(
@@ -56,6 +59,7 @@ final List<Product> dummyProducts = [
         name: 'Pottery Shop',
         imageUrl: 'https://th.bing.com/th/id/R.9b48642de2a7a5365b743c93651097b5?rik=BSFHuctwdHOcHg&pid=ImgRaw&r=0',
         rating: 4.5,
+        bio: 'We sell the best pottery in town!',
       ),
       createdAt: DateTime.now()),
   Product(
@@ -70,6 +74,7 @@ final List<Product> dummyProducts = [
         name: 'Porcelain World',
         imageUrl: 'https://th.bing.com/th/id/R.9b48642de2a7a5365b743c93651097b5?rik=BSFHuctwdHOcHg&pid=ImgRaw&r=0',
         rating: 4.8,
+        bio: 'The most beautiful porcelain in the world!',
       ),
       createdAt: DateTime.now()),
   Product(
@@ -84,6 +89,7 @@ final List<Product> dummyProducts = [
         name: 'Wooden Wonders',
         imageUrl: 'https://th.bing.com/th/id/R.9b48642de2a7a5365b743c93651097b5?rik=BSFHuctwdHOcHg&pid=ImgRaw&r=0',
         rating: 4.2,
+        bio: 'Hand-carved wooden items with love.',
       ),
       createdAt: DateTime.now()),
 ];
