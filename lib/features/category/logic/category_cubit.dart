@@ -12,8 +12,14 @@ class CategoryCubit extends Cubit<CategoryState> {
     final categories = await _categoriesRepo.getCategories();
     categories.fold(
       (error) => emit(CategoryFailure(error.toString())),
-      (categories) => emit(CategorySuccess(
-          categories: categories, selectedCategory: categories[0])),
+      (categories) {
+        if (categories.isNotEmpty) {
+          emit(CategorySuccess(
+              categories: categories, selectedCategory: categories[0]));
+        } else {
+          emit(const CategoryFailure('No categories found'));
+        }
+      },
     );
   }
 
