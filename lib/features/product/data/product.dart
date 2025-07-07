@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:handly/features/product/data/seller.dart';
 
 class Product {
@@ -20,4 +21,30 @@ class Product {
     required this.seller,
     required this.createdAt,
   });
+
+  factory Product.fromFirestore(DocumentSnapshot doc, Seller seller) {
+    final data = doc.data() as Map<String, dynamic>;
+    return Product(
+      id: doc.id,
+      title: data['title'] ?? '',
+      description: data['description'] ?? '',
+      photoUrl: data['photoUrl'] ?? '',
+      price: (data['price'] ?? 0).toDouble(),
+      categoryId: data['categoryId'] ?? '',
+      seller: seller,
+      createdAt: (data['createdAt'] as Timestamp).toDate(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'description': description,
+      'photoUrl': photoUrl,
+      'price': price,
+      'categoryId': categoryId,
+      'sellerId': seller.id,
+      'createdAt': createdAt,
+    };
+  }
 }
