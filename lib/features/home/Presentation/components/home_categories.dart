@@ -9,6 +9,8 @@ class HomeCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isArabic = Localizations.localeOf(context).languageCode == 'ar';
+
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
         if (state is CategoryLoading) {
@@ -43,7 +45,7 @@ class HomeCategories extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
-                      category.name,
+                      isArabic ? category.nameAr : category.nameEn,
                       style: TextStyle(
                         color: isSelected
                             ? Theme.of(context).colorScheme.onPrimary
