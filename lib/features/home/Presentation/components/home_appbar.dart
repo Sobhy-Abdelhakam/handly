@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/core/router/routers.dart';
 import 'package:handly/features/auth/cubit/auth_cubit.dart';
+import 'package:handly/features/auth/cubit/auth_state.dart';
 import 'package:handly/features/cart/logic/cart_cubit.dart';
 import 'package:handly/features/cart/logic/cart_state.dart';
 import 'package:handly/features/home/Presentation/components/badge_icon.dart';
@@ -15,18 +16,39 @@ class HomeAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              S.of(context).good_day,
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
-            Text(
-              S.of(context).user_name,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-          ],
+        BlocBuilder<AuthCubit, AuthState>(
+          builder: (context, state) {
+            final user = (state as AuthSuccess).user;
+            return Row(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, Routers.profile);
+                  },
+                  child: CircleAvatar(
+                    radius: 23,
+                    backgroundImage: NetworkImage( user.imageUrl ??
+                      'https://i.pravatar.cc/150?u=guest',
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      S.of(context).good_day,
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                    Text(
+                      user.name,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
         ),
         Row(
           children: [
