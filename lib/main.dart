@@ -15,12 +15,15 @@ import 'package:handly/features/category/logic/category_state.dart';
 import 'package:handly/features/home/Presentation/home_screen.dart';
 import 'package:handly/features/product/data/product_repo.dart';
 import 'package:handly/features/product/logic/product_cubit.dart';
+import 'package:handly/firebase_options.dart';
 import 'package:handly/generated/l10n.dart';
 
 Future<void> main() async {
-  Bloc.observer = const AppBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  Bloc.observer = const AppBlocObserver();
   runApp(const MyApp());
 }
 
