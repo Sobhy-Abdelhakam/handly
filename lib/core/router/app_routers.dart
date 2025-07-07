@@ -6,6 +6,7 @@ import 'package:handly/features/auth/presentation/forget/forget_pass_screen.dart
 import 'package:handly/features/auth/presentation/init_screen.dart';
 import 'package:handly/features/auth/presentation/login/login_screen.dart';
 import 'package:handly/features/auth/presentation/register/register_screen.dart';
+import 'package:handly/features/auth/presentation/user_profile_screen.dart';
 import 'package:handly/features/cart/data/cart_item.dart';
 import 'package:handly/features/cart/presentation/cart_screen.dart';
 import 'package:handly/features/checkout/presentation/screen/checkout_screen.dart';
@@ -31,6 +32,8 @@ class AppRouters {
         return _buildRoute(settings, const ConfirmScreen());
       case Routers.home:
         return _buildRoute(settings, const HomeScreen());
+      case Routers.profile:
+        return _buildRoute(settings, const UserProfileScreen());
       case Routers.productDetails:
         final product = settings.arguments as Product;
         return _buildRoute(settings, ProductInfoScreen(product: product));
