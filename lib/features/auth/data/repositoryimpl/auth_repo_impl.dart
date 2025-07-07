@@ -1,18 +1,22 @@
-import 'dart:convert';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:handly/core/errors/failures.dart';
 import 'package:handly/features/auth/domain/models/user.dart';
 import 'package:handly/features/auth/domain/repository/auth_repository.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepoImpl extends AuthRepository {
+  final firebase_auth.FirebaseAuth _firebaseAuth;
+  final FirebaseFirestore _firestore;
+
+  AuthRepoImpl({firebase_auth.FirebaseAuth? firebaseAuth, FirebaseFirestore? firestore}) : _firebaseAuth = firebaseAuth ?? firebase_auth.FirebaseAuth.instance, _firestore = firestore ?? FirebaseFirestore.instance;
+
   @override
   Future<User?> getCurrentUser() async {
-    final prefs = await SharedPreferences.getInstance();
-    final userString = prefs.getString('user');
-    if (userString != null) {
-      return User.fromJson(jsonDecode(userString));
+    final firebaseUser = _firebaseAuth.currentUser;
+    if (firebaseUser != null) {
+      final userDoc = await _firestore.collection('users').doc(firebaseUser.uid).get();
+      return User.fromJson(userDoc.data()!);
     }
     return null;
   }
@@ -20,19 +24,17 @@ class AuthRepoImpl extends AuthRepository {
   @override
   Future<Either<Failure, User>> login(String email, String password) async {
     try {
-      // Simulate API delay
-      await Future.delayed(const Duration(seconds: 3));
+      final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-      if (email == 'blocked@example.com') {
-        return Left(ServerFailures("Account is blocked."));
-      }
+      final userDoc = await _firestore.collection('users').doc(userCredential.user!.uid).get();
+      final user = User.fromJson(userDoc.data()!);
 
-      if (email != 'user@example.com') {
-        return Left(ServerFailures("User not found."));
-      }
-
-      final user = User(id: '1', name: 'Test User', email: email);
       return Right(user);
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      return Left(ServerFailures(e.message ?? 'An unknown error occurred'));
     } catch (e) {
       return Left(ServerFailures(e.toString()));
     }
@@ -40,28 +42,36 @@ class AuthRepoImpl extends AuthRepository {
 
   @override
   Future<void> logout() async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.remove('isLoggedIn');
-    await prefs.remove('user');
+    await _firebaseAuth.signOut();
   }
 
   @override
   Future<Either<Failure, User>> register(
       String name, String email, String password) async {
     try {
-      // Simulate API delay
-      await Future.delayed(const Duration(seconds: 3));
+      final userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-      final user = User(id: '1', name: name, email: email);
-      return Right(user);
+      final newUser = User(
+        id: userCredential.user!.uid,
+        name: name,
+        email: email,
+      );
+
+      await _firestore.collection('users').doc(newUser.id).set(newUser.toJson());
+
+      return Right(newUser);
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      return Left(ServerFailures(e.message ?? 'An unknown error occurred'));
     } catch (e) {
       return Left(ServerFailures(e.toString()));
     }
   }
 
   @override
-  Future<void> sendPasswordReset(String email) {
-    // TODO: implement sendPasswordReset
-    throw UnimplementedError();
+  Future<void> sendPasswordReset(String email) async {
+    await _firebaseAuth.sendPasswordResetEmail(email: email);
   }
 }

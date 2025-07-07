@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/features/auth/cubit/auth_state.dart';
 import 'package:handly/features/auth/domain/repository/auth_repository.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   final AuthRepository _authRepository;
@@ -18,10 +15,7 @@ class AuthCubit extends Cubit<AuthState> {
         (error) {
           emit(AuthFailure(error.message));
         },
-        (user) async {
-          final prefs = await SharedPreferences.getInstance();
-          await prefs.setBool('isLoggedIn', true);
-          await prefs.setString('user', jsonEncode(user.toJson()));
+        (user) {
           emit(AuthSuccess(user));
         },
       );
@@ -39,10 +33,7 @@ class AuthCubit extends Cubit<AuthState> {
         (error) {
           emit(AuthFailure(error.message));
         },
-        (user) async {
-          final prefs = await SharedPreferences.getInstance();
-          await prefs.setBool('isLoggedIn', true);
-          await prefs.setString('user', jsonEncode(user.toJson()));
+        (user) {
           emit(AuthSuccess(user));
         },
       );
@@ -77,3 +68,4 @@ class AuthCubit extends Cubit<AuthState> {
 
   void resetState() => emit(AuthInitial());
 }
+
