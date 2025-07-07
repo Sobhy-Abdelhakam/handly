@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "57919512010",
+    "project_id": "handly-a5175",
+    "storage_bucket": "handly-a5175.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57919512010:android:27c6469787d0aa0081c333",
+        "android_client_info": {
+          "package_name": "com.example.handly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP2hqI_o-6obbHU_Cts0C7CvmUs0tnvEU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
