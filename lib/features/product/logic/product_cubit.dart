@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:handly/features/product/data/product.dart';
 import 'package:handly/features/product/data/product_repo.dart';
 import 'package:handly/features/product/logic/product_state.dart';
 
@@ -24,6 +25,16 @@ class ProductCubit extends Cubit<ProductState> {
       (error) => emit(ProductFailure(error.toString())),
       (products) => emit(ProductSuccess(products)),
     );
+  }
+
+  Future<void> addProduct(Product product) async {
+    emit(ProductLoading());
+    try {
+      await _productRepo.addProduct(product);
+      emit(ProductSuccess([]));
+    } catch (e) {
+      emit(ProductFailure('Failed to add product: $e'));
+    }
   }
 }
 
