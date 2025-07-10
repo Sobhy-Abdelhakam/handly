@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:handly/features/home/Presentation/components/product_card.dart';
-import 'package:handly/features/product/logic/product_cubit.dart';
-import 'package:handly/features/product/logic/product_state.dart';
+import 'package:handly/features/product/presentation/cubit/product_cubit.dart';
+import 'package:handly/features/product/presentation/cubit/product_state.dart';
 
-class HomeProducts extends StatelessWidget {
-  const HomeProducts({super.key});
+import 'product_card.dart';
+
+class ProductGrid extends StatelessWidget {
+  const ProductGrid({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,10 @@ class HomeProducts extends StatelessWidget {
         if (state is ProductFailure) {
           return Center(child: Text('Error: ${state.message}'));
         }
-        if (state is ProductSuccess) {
+        if (state is ProductsLoaded) {
+          if (state.products.isEmpty) {
+            return const Center(child: Text('No products available'));
+          }
           return GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

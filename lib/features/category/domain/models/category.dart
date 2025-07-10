@@ -8,7 +8,7 @@ class Category {
   factory Category.fromFirestore(Map<String, dynamic> data, String documentId) {
     return Category(
       id: documentId,
-      nameEn: data['name_en'] ?? data['name_er'] ?? '', // Handles typo er/en
+      nameEn: data['name_en'] ?? '', // Handles typo er/en
       nameAr: data['name_ar'] ?? '',
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:handly/features/cart/data/cart_item.dart';
+import 'package:handly/features/cart/domain/models/cart_item.dart';
 import 'package:handly/features/cart/logic/cart_cubit.dart';
 import 'package:handly/features/cart/presentation/widget/confirm_delete_item.dart';
 

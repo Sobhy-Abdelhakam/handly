@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:handly/features/cart/data/cart_item.dart';
+import 'package:handly/features/cart/domain/models/cart_item.dart';
 import 'package:handly/features/checkout/model/credit_card_info.dart';
 import 'package:handly/features/checkout/model/delivery_option.dart';
 import 'package:handly/features/checkout/model/payment_method.dart';

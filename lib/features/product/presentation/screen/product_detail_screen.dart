@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/core/router/routers.dart';
-import 'package:handly/features/cart/data/cart_item.dart';
+import 'package:handly/features/cart/domain/models/cart_item.dart';
 import 'package:handly/features/cart/logic/cart_cubit.dart';
-import 'package:handly/features/product/data/product.dart';
+import 'package:handly/features/product/domain/models/product.dart';
 import 'package:handly/generated/l10n.dart';
 
-class ProductInfoScreen extends StatelessWidget {
-  const ProductInfoScreen({super.key, required this.product});
+class ProductDetailScreen extends StatelessWidget {
+  const ProductDetailScreen({super.key, required this.product});
 
   final Product product;
 
@@ -79,7 +79,7 @@ class ProductInfoScreen extends StatelessWidget {
                         CircleAvatar(
                           radius: 24,
                           backgroundImage: NetworkImage(
-                            product.seller.imageUrl,
+                            product.seller.imageUrl ?? '',
                           ),
                         ),
                         const SizedBox(width: 16),
@@ -91,21 +91,21 @@ class ProductInfoScreen extends StatelessWidget {
                                 product.seller.name,
                                 style: Theme.of(context).textTheme.titleLarge,
                               ),
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.star,
-                                    color: Colors.amber,
-                                    size: 20,
-                                  ),
-                                  const SizedBox(width: 4),
-                                  Text(
-                                    product.seller.rating.toString(),
-                                    style:
-                                        Theme.of(context).textTheme.titleMedium,
-                                  ),
-                                ],
-                              ),
+                              // Row(
+                              //   children: [
+                              //     const Icon(
+                              //       Icons.star,
+                              //       color: Colors.amber,
+                              //       size: 20,
+                              //     ),
+                              //     const SizedBox(width: 4),
+                              //     Text(
+                              //       product.seller.rating.toString(),
+                              //       style:
+                              //           Theme.of(context).textTheme.titleMedium,
+                              //     ),
+                              //   ],
+                              // ),
                             ],
                           ),
                         ),

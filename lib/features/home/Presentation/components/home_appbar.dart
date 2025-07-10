@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/core/router/routers.dart';
 import 'package:handly/features/auth/cubit/auth_cubit.dart';
-import 'package:handly/features/auth/cubit/auth_state.dart';
 import 'package:handly/features/cart/logic/cart_cubit.dart';
 import 'package:handly/features/cart/logic/cart_state.dart';
 import 'package:handly/features/home/Presentation/components/badge_icon.dart';
@@ -18,7 +17,7 @@ class HomeAppBar extends StatelessWidget {
       children: [
         BlocBuilder<AuthCubit, AuthState>(
           builder: (context, state) {
-            final user = (state as AuthSuccess).user;
+            final user = state.user!;
             return Row(
               children: [
                 InkWell(

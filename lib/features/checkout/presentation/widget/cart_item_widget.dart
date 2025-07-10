@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:handly/features/cart/data/cart_item.dart';
+import 'package:handly/features/cart/domain/models/cart_item.dart';
 
 class CartItemWidget extends StatelessWidget {
   final CartItem item;

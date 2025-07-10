@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:handly/features/cart/data/cart_item.dart';
+import 'package:handly/features/cart/domain/models/cart_item.dart';
 import 'package:handly/features/cart/logic/cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {

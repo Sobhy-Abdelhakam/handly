@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:handly/features/product/data/seller.dart';
+import 'package:handly/features/auth/domain/models/user.dart';
 
 class Product {
   final String id;
@@ -8,7 +8,7 @@ class Product {
   final String photoUrl;
   final double price;
   final String categoryId;
-  final Seller seller;
+  final User seller;
   final DateTime createdAt;
 
   Product({
@@ -22,7 +22,7 @@ class Product {
     required this.createdAt,
   });
 
-  factory Product.fromFirestore(DocumentSnapshot doc, Seller seller) {
+  factory Product.fromFirestore(DocumentSnapshot doc, User seller) {
     final data = doc.data() as Map<String, dynamic>;
     return Product(
       id: doc.id,

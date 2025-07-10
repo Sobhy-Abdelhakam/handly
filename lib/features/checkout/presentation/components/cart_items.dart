@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:handly/features/cart/data/cart_item.dart';
+import 'package:handly/features/cart/domain/models/cart_item.dart';
 import 'package:handly/features/checkout/presentation/widget/cart_item_widget.dart';
 import 'package:handly/generated/l10n.dart';
 

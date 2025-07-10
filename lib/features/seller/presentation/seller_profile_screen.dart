@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:handly/features/home/Presentation/components/product_card.dart';
-import 'package:handly/features/product/data/product_repo.dart';
-import 'package:handly/features/product/data/seller.dart';
+import 'package:handly/features/auth/domain/models/user.dart';
+import 'package:handly/features/product/domain/usecases/get_user_products.dart';
+import 'package:handly/features/product/presentation/widgets/product_card.dart';
+import 'package:handly/features/product/data/product_repository_impl.dart';
 import 'package:handly/features/seller/logic/seller_profile_cubit.dart';
 import 'package:handly/features/seller/logic/seller_profile_state.dart';
 
 class SellerProfileScreen extends StatelessWidget {
   const SellerProfileScreen({super.key, required this.seller});
 
-  final Seller seller;
+  final User seller;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class SellerProfileScreen extends StatelessWidget {
       body: BlocProvider(
         create:
             (context) =>
-                SellerProfileCubit(ProductRepo())
+                SellerProfileCubit(GetUserProducts(ProductRepositoryImpl()))
                   ..getProductsBySeller(seller.id),
         child: BlocBuilder<SellerProfileCubit, SellerProfileState>(
           builder: (context, state) {
@@ -34,7 +35,7 @@ class SellerProfileScreen extends StatelessWidget {
                           children: [
                             CircleAvatar(
                               radius: 50,
-                              backgroundImage: NetworkImage(seller.imageUrl),
+                              backgroundImage: NetworkImage(seller.imageUrl ?? ''),
                             ),
                             const SizedBox(width: 16),
                             Expanded(
@@ -48,23 +49,23 @@ class SellerProfileScreen extends StatelessWidget {
                                           context,
                                         ).textTheme.headlineSmall,
                                   ),
-                                  Row(
-                                    children: [
-                                      const Icon(
-                                        Icons.star,
-                                        color: Colors.amber,
-                                        size: 20,
-                                      ),
-                                      const SizedBox(width: 4),
-                                      Text(
-                                        seller.rating.toString(),
-                                        style:
-                                            Theme.of(
-                                              context,
-                                            ).textTheme.titleMedium,
-                                      ),
-                                    ],
-                                  ),
+                                  // Row(
+                                  //   children: [
+                                  //     const Icon(
+                                  //       Icons.star,
+                                  //       color: Colors.amber,
+                                  //       size: 20,
+                                  //     ),
+                                  //     const SizedBox(width: 4),
+                                  //     Text(
+                                  //       seller.rating.toString(),
+                                  //       style:
+                                  //           Theme.of(
+                                  //             context,
+                                  //           ).textTheme.titleMedium,
+                                  //     ),
+                                  //   ],
+                                  // ),
                                 ],
                               ),
                             ),
@@ -72,7 +73,7 @@ class SellerProfileScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          seller.bio,
+                          seller.bio ?? '',
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ],

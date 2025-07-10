@@ -1,15 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:handly/features/category/data/categories_repo.dart';
-import 'package:handly/features/category/data/category.dart';
-import 'package:handly/features/category/logic/category_state.dart';
+import 'package:handly/features/category/domain/models/category.dart';
+import 'package:handly/features/category/domain/usecases/get_all_categories.dart';
+import 'package:handly/features/category/presentation/cubit/category_state.dart';
 
 class CategoryCubit extends Cubit<CategoryState> {
-  final CategoriesRepo _categoriesRepo;
-  CategoryCubit(this._categoriesRepo) : super(CategoryInitial());
+  final GetAllCategories _getAllCategories;
+
+  CategoryCubit(this._getAllCategories) : super(CategoryInitial());
 
   Future<void> getCategories() async {
     emit(CategoryLoading());
-    final categories = await _categoriesRepo.getCategories();
+    final categories = await _getAllCategories();
     categories.fold(
       (error) => emit(CategoryFailure(error.toString())),
       (categories) {

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/features/auth/cubit/auth_cubit.dart';
-import 'package:handly/features/auth/cubit/auth_state.dart';
-import 'package:handly/features/product/presentation/sell_product/sell_product_screen.dart';
+import 'package:handly/features/product/presentation/screen/sell_product_screen.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -15,8 +14,8 @@ class UserProfileScreen extends StatelessWidget {
       ),
       body: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {
-          if (state is AuthSuccess) {
-            final user = state.user;
+          if (state.status == AuthStatus.success) {
+            final user = state.user!;
             return Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:handly/core/router/routers.dart';
-import 'package:handly/features/product/data/product.dart';
+import 'package:handly/features/product/domain/models/product.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.product});
@@ -53,7 +53,7 @@ class ProductCard extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 15,
-                        backgroundImage: NetworkImage(product.seller.imageUrl),
+                        backgroundImage: NetworkImage(product.seller.imageUrl ?? 'https://i.pravatar.cc/150?u=guest'),
                       ),
                       const SizedBox(width: 8),
                       Expanded(
@@ -68,20 +68,20 @@ class ProductCard extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                  size: 16,
-                                ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  product.seller.rating.toString(),
-                                  style: const TextStyle(fontSize: 12),
-                                ),
-                              ],
-                            ),
+                            // Row(
+                            //   children: [
+                            //     const Icon(
+                            //       Icons.star,
+                            //       color: Colors.amber,
+                            //       size: 16,
+                            //     ),
+                            //     const SizedBox(width: 4),
+                            //     Text(
+                            //       product.seller.rating.toString(),
+                            //       style: const TextStyle(fontSize: 12),
+                            //     ),
+                            //   ],
+                            // ),
                           ],
                         ),
                       ),

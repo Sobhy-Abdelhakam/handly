@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:handly/features/category/logic/category_cubit.dart';
-import 'package:handly/features/category/logic/category_state.dart';
-import 'package:handly/features/product/logic/product_cubit.dart';
 
-class HomeCategories extends StatelessWidget {
-  const HomeCategories({super.key});
+import 'cubit/category_cubit.dart';
+import 'cubit/category_state.dart';
+
+class CategoryListItem extends StatelessWidget {
+  const CategoryListItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     final isArabic = Localizations.localeOf(context).languageCode == 'ar';
-
     return BlocBuilder<CategoryCubit, CategoryState>(
       builder: (context, state) {
         if (state is CategoryLoading) {
@@ -32,7 +31,7 @@ class HomeCategories extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
                     context.read<CategoryCubit>().selectCategory(category);
-                    context.read<ProductCubit>().getProductsByCategory(category.id);
+                    // context.read<ProductCubit>().getProductsByCategory(category.id); // may delete this, because it is already done in the listener of CategoryCubit
                   },
                   child: Container(
                     padding:
@@ -66,4 +65,3 @@ class HomeCategories extends StatelessWidget {
     );
   }
 }
-

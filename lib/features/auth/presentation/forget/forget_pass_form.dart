@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:handly/core/router/routers.dart';
 import 'package:handly/features/auth/cubit/auth_cubit.dart';
-import 'package:handly/features/auth/cubit/auth_state.dart';
 import 'package:handly/features/auth/presentation/widget/confirm_button.dart';
 import 'package:handly/features/auth/presentation/widget/email_field.dart';
 import 'package:handly/generated/l10n.dart';
@@ -45,17 +44,17 @@ class _ForgetPassFormState extends State<ForgetPassForm> {
           const SizedBox(height: 32),
           BlocConsumer<AuthCubit, AuthState>(
             builder: (_, state) {
-              return state is AuthLoading
+              return state.status == AuthStatus.loading
                   ? const CircularProgressIndicator()
                   : ConfirmButton(text: S.of(context).login, submit: _send);
             },
             listener: (_, state) {
-              if (state is AuthResetEmailSent) {
+              if (state.status == AuthStatus.resetEmailSent) {
                 Navigator.pushNamed(context, Routers.confrimSendEmail);
-              } else if (state is AuthFailure) {
+              } else if (state.status == AuthStatus.failure) {
                 ScaffoldMessenger.of(
                   context,
-                ).showSnackBar(SnackBar(content: Text(state.message)));
+                ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
               }
             },
           ),

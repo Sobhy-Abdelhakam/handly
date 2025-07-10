@@ -1,19 +1,36 @@
-import 'package:handly/features/auth/domain/models/user.dart';
+part of 'auth_cubit.dart';
 
-abstract class AuthState {}
-
-class AuthInitial extends AuthState {}
-
-class AuthLoading extends AuthState {}
-
-class AuthSuccess extends AuthState {
-  final User user;
-  AuthSuccess(this.user);
+enum AuthStatus {
+  initial,
+  loading,
+  success,
+  failure,
+  resetEmailSent,
 }
 
-class AuthFailure extends AuthState {
-  final String message;
-  AuthFailure(this.message);
-}
+class AuthState extends Equatable {
+  final AuthStatus status;
+  final User? user;
+  final String? errorMessage;
 
-class AuthResetEmailSent extends AuthState {}
+  const AuthState({
+    this.status = AuthStatus.initial,
+    this.user,
+    this.errorMessage,
+  });
+
+  AuthState copyWith({
+    AuthStatus? status,
+    User? user,
+    String? errorMessage,
+  }) {
+    return AuthState(
+      status: status ?? this.status,
+      user: user ?? this.user,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
+
+  @override
+  List<Object?> get props => [status, user, errorMessage];
+}
