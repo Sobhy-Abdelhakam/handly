@@ -6,18 +6,9 @@ import 'package:handly/core/controllers/app_bloc_observer.dart';
 import 'package:handly/core/router/app_routers.dart';
 import 'package:handly/features/auth/cubit/auth_cubit.dart';
 import 'package:handly/features/auth/data/repositoryimpl/auth_repo_impl.dart';
-import 'package:handly/features/auth/presentation/login/login_screen.dart';
+import 'package:handly/features/auth/presentation/init_screen.dart';
 import 'package:handly/features/cart/logic/cart_cubit.dart';
-import 'package:handly/features/category/data/category_repository_impl.dart';
-import 'package:handly/features/category/domain/usecases/get_all_categories.dart';
-import 'package:handly/features/category/presentation/cubit/category_cubit.dart';
 import 'package:handly/features/home/Presentation/home_screen.dart';
-import 'package:handly/features/product/data/product_repository_impl.dart';
-import 'package:handly/features/product/domain/usecases/create_product.dart';
-import 'package:handly/features/product/domain/usecases/delete_product.dart';
-import 'package:handly/features/product/domain/usecases/get_products_by_category.dart';
-import 'package:handly/features/product/domain/usecases/get_user_products.dart';
-import 'package:handly/features/product/presentation/cubit/product_cubit.dart';
 import 'package:handly/firebase_options.dart';
 import 'package:handly/generated/l10n.dart';
 
@@ -27,8 +18,6 @@ Future<void> main() async {
   Bloc.observer = const AppBlocObserver();
 
   final authRepo = AuthRepoImpl();
-  final categoryRepo = CategoryRepositoryImpl();
-  final productRepo = ProductRepositoryImpl();
 
   final authCubit = AuthCubit(authRepo);
   await authCubit.checkAuthStatus(); // <- make sure auth state is ready before app builds
@@ -37,21 +26,6 @@ Future<void> main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => authCubit),
-        BlocProvider(
-          create:
-              (_) =>
-                  CategoryCubit(GetAllCategories(categoryRepo))
-                    ..getCategories(),
-        ),
-        BlocProvider(
-          create:
-              (_) => ProductCubit(
-                createProduct: CreateProduct(productRepo),
-                deleteProduct: DeleteProduct(productRepo),
-                getProductsByCategory: GetProductsByCategory(productRepo),
-                getUserProducts: GetUserProducts(productRepo),
-              ),
-        ),
         BlocProvider(create: (_) => CartCubit()),
       ],
       child: const MyApp(),
@@ -93,7 +67,7 @@ class MyApp extends StatelessWidget {
           if (state.status == AuthStatus.success) {
             return const HomeScreen();
           }
-          return const LoginScreen();
+          return const InitScreen();
         },
       ),
     );
